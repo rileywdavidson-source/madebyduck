@@ -1,4 +1,9 @@
 import Logo from './components/Logo'
+import Problem from './components/Problem'
+import BriefSystem from './components/BriefSystem'
+import GoodAds from './components/GoodAds'
+import WhyDuck from './components/WhyDuck'
+import Retainers from './components/Retainers'
 import Contact from './components/Contact'
 
 function Hero() {
@@ -51,6 +56,11 @@ export default function App() {
   return (
     <>
       <Hero />
+      <Problem />
+      <BriefSystem />
+      <GoodAds />
+      <WhyDuck />
+      <Retainers />
       <Contact />
       <Footer />
     </>

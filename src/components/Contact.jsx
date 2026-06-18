@@ -26,24 +26,24 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="bg-birch px-8 md:px-16 lg:px-24 py-24 md:py-32"
+      className="bg-mallard px-8 md:px-16 lg:px-24 py-24 md:py-32 lg:py-40"
     >
       <div className="max-w-lg">
         {submitted ? (
           <div>
-            <p className="text-[15px] text-mallard font-semibold mb-2">
+            <p className="text-[15px] text-birch font-semibold mb-2">
               Message received.
             </p>
-            <p className="text-[15px] text-mallard opacity-70">
+            <p className="text-[15px] text-birch opacity-70">
               We'll be in touch shortly.
             </p>
           </div>
         ) : (
           <>
-            <h2 className="text-[72px] leading-[1.05] font-black text-mallard mb-4">
+            <h2 className="text-[72px] leading-[1.05] font-black text-birch mb-4">
               Let's talk.
             </h2>
-            <p className="text-[15px] text-mallard mb-10 opacity-80">
+            <p className="text-[15px] text-birch mb-10 opacity-80">
               Tell us about your brief and we'll take it from there.
             </p>
 
@@ -60,7 +60,7 @@ export default function Contact() {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="name"
-                  className="text-[11px] font-semibold text-mallard tracking-widest uppercase"
+                  className="text-[11px] font-semibold text-birch tracking-widest uppercase"
                 >
                   Name
                 </label>
@@ -71,7 +71,7 @@ export default function Contact() {
                   required
                   value={fields.name}
                   onChange={handleChange}
-                  className="bg-transparent border border-mallard/30 rounded-lg px-4 py-3 text-[15px] text-mallard placeholder:text-mallard/40 focus:outline-none focus:border-mallard transition-colors"
+                  className="bg-transparent border border-birch/30 rounded-lg px-4 py-3 text-[15px] text-birch placeholder:text-birch/40 focus:outline-none focus:border-birch transition-colors"
                   placeholder="Your name"
                 />
               </div>
@@ -79,7 +79,7 @@ export default function Contact() {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="email"
-                  className="text-[11px] font-semibold text-mallard tracking-widest uppercase"
+                  className="text-[11px] font-semibold text-birch tracking-widest uppercase"
                 >
                   Email
                 </label>
@@ -90,7 +90,7 @@ export default function Contact() {
                   required
                   value={fields.email}
                   onChange={handleChange}
-                  className="bg-transparent border border-mallard/30 rounded-lg px-4 py-3 text-[15px] text-mallard placeholder:text-mallard/40 focus:outline-none focus:border-mallard transition-colors"
+                  className="bg-transparent border border-birch/30 rounded-lg px-4 py-3 text-[15px] text-birch placeholder:text-birch/40 focus:outline-none focus:border-birch transition-colors"
                   placeholder="you@company.com"
                 />
               </div>
@@ -98,7 +98,7 @@ export default function Contact() {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="message"
-                  className="text-[11px] font-semibold text-mallard tracking-widest uppercase"
+                  className="text-[11px] font-semibold text-birch tracking-widest uppercase"
                 >
                   Message
                 </label>
@@ -109,7 +109,7 @@ export default function Contact() {
                   rows={5}
                   value={fields.message}
                   onChange={handleChange}
-                  className="bg-transparent border border-mallard/30 rounded-lg px-4 py-3 text-[15px] text-mallard placeholder:text-mallard/40 focus:outline-none focus:border-mallard transition-colors resize-none"
+                  className="bg-transparent border border-birch/30 rounded-lg px-4 py-3 text-[15px] text-birch placeholder:text-birch/40 focus:outline-none focus:border-birch transition-colors resize-none"
                   placeholder="Tell us about your project…"
                 />
               </div>
