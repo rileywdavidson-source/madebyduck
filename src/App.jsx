@@ -1,4 +1,6 @@
 import Logo from './components/Logo'
+import Grain from './components/Grain'
+import Marquee from './components/Marquee'
 import Problem from './components/Problem'
 import BriefSystem from './components/BriefSystem'
 import GoodAds from './components/GoodAds'
@@ -13,20 +15,20 @@ function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen bg-birch flex flex-col justify-center px-8 md:px-16 lg:px-24">
+    <section className="relative min-h-screen bg-birch flex flex-col justify-center px-8 md:px-16 lg:px-24 overflow-hidden">
       {/* Top bar — logo only */}
       <div className="absolute top-8 left-8 md:top-10 md:left-16 lg:left-24">
         <Logo size={44} />
       </div>
 
       {/* Hero content — left-aligned, vertically centred */}
-      <div className="max-w-4xl">
-        <h1 className="text-[72px] md:text-[80px] lg:text-[90px] leading-[1.05] font-black text-mallard tracking-tight">
+      <div className="max-w-5xl">
+        <h1 className="text-[80px] md:text-[110px] lg:text-[150px] leading-[0.9] font-black text-mallard tracking-tight">
           Ad creative built on advertising principles.
         </h1>
 
-        <p className="text-[15px] text-mallard mt-6 mb-10 opacity-80">
-          Better briefs. Better ads. Simpler than you think.
+        <p className="text-[15px] text-mallard mt-8 mb-12 opacity-70 max-w-xs">
+          Better briefs. Better ads.
         </p>
 
         <a
@@ -43,9 +45,9 @@ function Hero() {
 
 function Footer() {
   return (
-    <footer className="bg-birch border-t border-mallard/10 px-8 md:px-16 lg:px-24 py-8 flex items-center gap-4">
+    <footer className="bg-onyx px-8 md:px-16 lg:px-24 py-8 flex items-center gap-4">
       <Logo size={24} />
-      <span className="text-[11px] text-mallard tracking-wide opacity-60">
+      <span className="text-[11px] text-birch tracking-wide opacity-40">
         madebyduck.com
       </span>
     </footer>
@@ -55,8 +57,10 @@ function Footer() {
 export default function App() {
   return (
     <>
+      <Grain />
       <Hero />
       <Problem />
+      <Marquee />
       <BriefSystem />
       <GoodAds />
       <WhyDuck />

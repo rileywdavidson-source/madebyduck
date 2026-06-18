@@ -5,6 +5,9 @@
   --color-mallard: #1B5533;
   --color-beak: #FF6D2D;
   --color-beak-hover: #e85e22;
+  --color-chestnut: #401F21;
+  --color-speculum: #2A4E8E;
+  --color-onyx: #1B2409;
 
   --font-family-sans: "Figtree", sans-serif;
 }
@@ -28,4 +31,9 @@ body {
 
 #root {
   min-height: 100dvh;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }

@@ -1,6 +1,9 @@
 import { useState } from 'react'
+import { useInView } from '../hooks/useInView'
+import { reveal } from '../utils/reveal'
 
 export default function Contact() {
+  const [ref, inView] = useInView()
   const [fields, setFields] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState(false)
@@ -25,12 +28,13 @@ export default function Contact() {
 
   return (
     <section
+      ref={ref}
       id="contact"
       className="bg-mallard px-8 md:px-16 lg:px-24 py-24 md:py-32 lg:py-40"
     >
       <div className="max-w-lg">
         {submitted ? (
-          <div>
+          <div style={reveal(inView, 0)}>
             <p className="text-[15px] text-birch font-semibold mb-2">
               Message received.
             </p>
@@ -40,14 +44,15 @@ export default function Contact() {
           </div>
         ) : (
           <>
-            <h2 className="text-[72px] leading-[1.05] font-black text-birch mb-4">
+            <h2 style={reveal(inView, 0)} className="text-[72px] md:text-[100px] lg:text-[128px] leading-[0.92] font-black text-birch mb-6 tracking-tight">
               Let's talk.
             </h2>
-            <p className="text-[15px] text-birch mb-10 opacity-80">
+            <p style={reveal(inView, 0.14)} className="text-[15px] text-birch mb-10 opacity-70">
               Tell us about your brief and we'll take it from there.
             </p>
 
             <form
+              style={reveal(inView, 0.28)}
               name="contact"
               method="POST"
               data-netlify="true"
