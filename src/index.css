@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-birch: #FFF3D6;
+  --color-mallard: #1B5533;
+  --color-beak: #FF6D2D;
+  --color-beak-hover: #e85e22;
+
+  --font-family-sans: "Figtree", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #FFF3D6;
+}
+
+body {
+  margin: 0;
+  background-color: #FFF3D6;
+  font-family: "Figtree", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #1B5533;
+}
+
+#root {
+  min-height: 100dvh;
+}

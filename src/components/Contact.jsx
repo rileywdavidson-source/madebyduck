@@ -1,0 +1,135 @@
+import { useState } from 'react'
+
+export default function Contact() {
+  const [fields, setFields] = useState({ name: '', email: '', message: '' })
+  const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState(false)
+
+  const handleChange = (e) =>
+    setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setError(false)
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        'form-name': 'contact',
+        ...fields,
+      }).toString(),
+    })
+      .then(() => setSubmitted(true))
+      .catch(() => setError(true))
+  }
+
+  return (
+    <section
+      id="contact"
+      className="bg-birch px-8 md:px-16 lg:px-24 py-24 md:py-32"
+    >
+      <div className="max-w-lg">
+        {submitted ? (
+          <div>
+            <p className="text-[15px] text-mallard font-semibold mb-2">
+              Message received.
+            </p>
+            <p className="text-[15px] text-mallard opacity-70">
+              We'll be in touch shortly.
+            </p>
+          </div>
+        ) : (
+          <>
+            <h2 className="text-[72px] leading-[1.05] font-black text-mallard mb-4">
+              Let's talk.
+            </h2>
+            <p className="text-[15px] text-mallard mb-10 opacity-80">
+              Tell us about your brief and we'll take it from there.
+            </p>
+
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-5"
+            >
+              {/* Required hidden field for Netlify */}
+              <input type="hidden" name="form-name" value="contact" />
+
+              <div className="flex flex-col gap-1.5">
+                <label
+                  htmlFor="name"
+                  className="text-[11px] font-semibold text-mallard tracking-widest uppercase"
+                >
+                  Name
+                </label>
+                <input
+                  id="name"
+                  type="text"
+                  name="name"
+                  required
+                  value={fields.name}
+                  onChange={handleChange}
+                  className="bg-transparent border border-mallard/30 rounded-lg px-4 py-3 text-[15px] text-mallard placeholder:text-mallard/40 focus:outline-none focus:border-mallard transition-colors"
+                  placeholder="Your name"
+                />
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label
+                  htmlFor="email"
+                  className="text-[11px] font-semibold text-mallard tracking-widest uppercase"
+                >
+                  Email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  required
+                  value={fields.email}
+                  onChange={handleChange}
+                  className="bg-transparent border border-mallard/30 rounded-lg px-4 py-3 text-[15px] text-mallard placeholder:text-mallard/40 focus:outline-none focus:border-mallard transition-colors"
+                  placeholder="you@company.com"
+                />
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label
+                  htmlFor="message"
+                  className="text-[11px] font-semibold text-mallard tracking-widest uppercase"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={5}
+                  value={fields.message}
+                  onChange={handleChange}
+                  className="bg-transparent border border-mallard/30 rounded-lg px-4 py-3 text-[15px] text-mallard placeholder:text-mallard/40 focus:outline-none focus:border-mallard transition-colors resize-none"
+                  placeholder="Tell us about your project…"
+                />
+              </div>
+
+              {error && (
+                <p className="text-[13px] text-beak">
+                  Something went wrong. Please try again.
+                </p>
+              )}
+
+              <button
+                type="submit"
+                className="self-start bg-beak text-birch font-semibold text-[15px] rounded-full px-8 py-3.5 transition-colors hover:bg-beak-hover active:scale-[0.98] cursor-pointer"
+              >
+                Send
+              </button>
+            </form>
+          </>
+        )}
+      </div>
+    </section>
+  )
+}
