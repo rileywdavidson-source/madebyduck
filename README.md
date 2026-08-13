@@ -4,7 +4,7 @@ Four pages, one section each. Hardcoded HTML and CSS. No framework, no build ste
 no dependencies. Netlify serves the repo root as-is.
 
 ```
-index.html                  home: the banner, then the case for advertising
+index.html                  home: the banner, then the philosophy
 why-the-duck/index.html     the three beliefs, set in the three formats
 pricing/index.html          the three retainers, then all five questions
 audit/index.html            the free audit, the form, and contact
@@ -22,8 +22,8 @@ exception is `/audit/`, where the full contact block already sits directly above
 footer, so the footer there drops to the legal line rather than repeating the address
 twice on one screen.
 
-The audit is the only call to action. Every page ends pointing at it, and each one also
-points at the next page along: home to why the duck, why the duck to pricing.
+The audit is the only call to action. Home carries it in the banner itself; why the duck
+and pricing end on a Next band that points at it, and at the next page along.
 
 **Header and footer are duplicated in all four files.** That is the cost of no build
 step. Styling is still one edit because it all lives in `styles.css`, but changing nav
@@ -49,6 +49,10 @@ Only Birch and Beak Orange are legible as type on Mallard Green (7.96:1 and 3.12
 Speculum Blue reads 1.08:1 there and Chestnut 1.67:1, so neither is usable for text on
 that ground.
 
+Highlighted words use `--hi`, which is Beak Orange by default. On Speculum Blue that
+would be 2.90:1, under the 3:1 large-text bar, so `.section--blue` redefines `--hi` to
+Birch. Move a section between grounds and its highlight follows the ground.
+
 ## Fonts
 
 Figtree (variable, 300-900) and EB Garamond italic 400. Latin subset, 45KB total,
@@ -68,7 +72,7 @@ self-hosted so there are no third-party requests at all. Figtree is preloaded.
 
 ## Labels not in the supplied copy
 
-Eyebrows: *Advertising*, *The duck*, *The audit*, *Next*. The supplied section labels
+Eyebrows: *Philosophy*, *The duck*, *The audit*, *Next*. The supplied section labels
 were too long for an eyebrow, which is one or two words. *Pricing* and *Contact* are
 yours. Page titles and meta descriptions are mine too.
 Format slugs: `Social 1080 x 1350`, `Display 300 x 250`, `EDM 600 wide`, plus the meta

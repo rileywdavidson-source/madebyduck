@@ -54,6 +54,7 @@
   --edge:   3px;
 
   --focus: var(--chestnut);
+  --hi: var(--orange);
 
   /* One pass of the banner. Five frames, then it holds. */
   --banner-run: 7s;
@@ -115,7 +116,7 @@ a { color: inherit; }
   line-height: 1;
 }
 
-.hi { color: var(--orange); }
+.hi { color: var(--hi); }
 
 
 /* ---------- Focus and skip link ---------- */
@@ -161,7 +162,10 @@ a { color: inherit; }
 .section--birch   { background: var(--birch);    color: var(--chestnut); }
 .section--chestnut{ background: var(--chestnut); color: var(--birch); --focus: var(--birch); }
 .section--green   { background: var(--mallard);  color: var(--birch); --focus: var(--birch); }
-.section--blue    { background: var(--speculum); color: var(--birch); --focus: var(--birch); }
+.section--blue    { background: var(--speculum); color: var(--birch); --focus: var(--birch);
+                    /* Orange type on this ground is 2.90:1, under the 3:1 large-text
+                       bar, so the highlight falls back to Birch here. */
+                    --hi: var(--birch); }
 
 
 /* ---------- Buttons ----------
@@ -443,7 +447,7 @@ a { color: inherit; }
    2. The case for advertising.
    ========================================================================= */
 
-.longgame { padding-bottom: clamp(4rem, 11vw, 9rem); }
+.longgame { padding-bottom: clamp(3.25rem, 8vw, 6.5rem); }
 
 .longgame__head { max-width: 14ch; }
 
