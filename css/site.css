@@ -1,0 +1,704 @@
+/* ============================================================
+   Madebyduck — site styles
+   Converted from the Claude Design export "Madebyduck Site.dc.html".
+   Values are carried over verbatim from the export's inline styles and
+   from the Creative Duck design-system tokens the export depended on.
+   ============================================================ */
+
+/* ── Webfonts ─────────────────────────────────────────────────
+   Figtree is a variable font: one file serves 400–900, so the
+   weights actually used (400/700/800/900) cost a single request.
+   EB Garamond is used in one style only: italic 400.            */
+
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('../fonts/figtree-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('../fonts/figtree-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/eb-garamond-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/eb-garamond-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ── Tokens ───────────────────────────────────────────────── */
+
+:root {
+  /* Palette */
+  --birch: #FFF3D6;         /* warm paper — page + light sections   */
+  --birch-card: #FFFCF4;    /* slightly lighter card fill           */
+  --mallard: #1B5533;       /* deep green — brand                   */
+  --beak: #FF6D2D;          /* orange — accent                      */
+  --ink: #401F21;           /* chestnut — borders, strong text      */
+  --body-ink: #4A2D2F;      /* body copy                            */
+  --speculum: #2A4E8E;      /* blue — audit section                 */
+
+  /* Tints used on dark grounds */
+  --on-dark-90: rgba(255, 243, 214, 0.9);
+  --on-dark-86: rgba(255, 243, 214, 0.86);
+  --on-dark-82: rgba(255, 243, 214, 0.82);
+  --on-dark-80: rgba(255, 243, 214, 0.8);
+  --on-dark-72: rgba(255, 243, 214, 0.72);
+  --on-dark-70: rgba(255, 243, 214, 0.7);
+  --on-dark-60: rgba(255, 243, 214, 0.6);
+  --on-dark-rule: rgba(255, 243, 214, 0.25);
+  --on-dark-hairline: rgba(255, 243, 214, 0.3);
+
+  /* Typefaces */
+  --font-sans: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Figtree', system-ui, sans-serif;
+  --font-serif: 'EB Garamond', 'Iowan Old Style', Georgia, serif;
+
+  /* Print feel — baked in from the Design tweaks panel defaults
+     (grainStrength 0.3, stampDepth 6px). */
+  --grain-op: 0.3;
+  --stamp: 6px;
+
+  --radius-card: 14px;
+  --radius-btn: 10px;
+  --radius-field: 8px;
+  --wrap-max: 1180px;
+  --gutter: clamp(20px, 5vw, 64px);
+}
+
+/* ── Base ─────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--birch);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  text-wrap: pretty;
+}
+
+a { color: var(--mallard); }
+a:hover { color: var(--beak); }
+
+:focus-visible {
+  outline: 3px solid var(--beak);
+  outline-offset: 3px;
+}
+
+img { max-width: 100%; }
+
+.page { overflow-x: hidden; }
+
+.accent { color: var(--beak); }
+
+/* ── Section shell ────────────────────────────────────────── */
+
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(52px, 8vw, 96px) var(--gutter);
+}
+
+.section--hero {
+  background: var(--mallard);
+  color: var(--birch);
+  padding: clamp(84px, 15vw, 168px) var(--gutter) clamp(76px, 13vw, 148px);
+}
+.section--paper { background: var(--birch); }
+.section--mallard {
+  background: var(--mallard);
+  color: var(--birch);
+  padding: clamp(56px, 9vw, 108px) var(--gutter);
+}
+.section--pricing { padding: clamp(52px, 8.5vw, 100px) var(--gutter); }
+.section--audit {
+  background: var(--speculum);
+  color: var(--birch);
+  padding: clamp(78px, 15vw, 156px) var(--gutter);
+}
+.section--contact {
+  background: var(--ink);
+  color: var(--birch);
+  padding: clamp(60px, 10vw, 112px) var(--gutter) clamp(36px, 6vw, 56px);
+}
+
+/* Riso-style halftone overlay. Two recipes: a single dark dot grid on
+   paper, and a paired dark/light grid on coloured grounds. */
+.grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--grain-op);
+  mix-blend-mode: multiply;
+  background-size: 5px 5px;
+}
+.grain--light { background-image: radial-gradient(var(--ink) 1px, transparent 1.2px); }
+.grain--dark {
+  background-image:
+    radial-gradient(#000 1px, transparent 1.2px),
+    radial-gradient(rgba(255, 243, 214, 0.55) 1px, transparent 1.2px);
+  background-size: 5px 5px, 5px 5px;
+  background-position: 0 0, 2px 2px;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: var(--wrap-max);
+  margin: 0 auto;
+}
+.wrap--split {
+  display: grid;
+  gap: clamp(34px, 5vw, 68px);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: start;
+}
+
+/* ── Type ─────────────────────────────────────────────────── */
+
+/* Editorial serif italic label that opens most sections */
+.eyebrow {
+  margin: 0 0 16px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 19px;
+  color: var(--mallard);
+}
+.eyebrow--on-dark { color: var(--on-dark-82); }
+.eyebrow--lead {
+  margin: 0;
+  font-size: clamp(17px, 2.4vw, 22px);
+}
+.eyebrow--sm {
+  margin: 0;
+  font-size: 18px;
+}
+.eyebrow--tight { margin-bottom: 10px; }
+.eyebrow--wide { margin-bottom: 20px; }
+.eyebrow--audit { margin-bottom: 14px; }
+.eyebrow--contact { margin-bottom: 12px; }
+
+.h-hero {
+  margin: 0;
+  max-width: 16ch;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(40px, 8.4vw, 96px);
+  line-height: 0.86;
+  letter-spacing: -0.022em;
+  text-transform: uppercase;
+  color: var(--birch);
+}
+
+/* "Advertising is a long game." */
+.h-xl {
+  margin: 0 0 clamp(30px, 4.6vw, 52px);
+  max-width: 16ch;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(38px, 7.6vw, 76px);
+  line-height: 0.94;
+  letter-spacing: -0.042em;
+  color: var(--ink);
+}
+
+/* "Why the duck." */
+.h-2xl {
+  margin: 0 0 24px;
+  max-width: 11ch;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(42px, 8.6vw, 96px);
+  line-height: 0.88;
+  letter-spacing: -0.022em;
+  text-transform: uppercase;
+  color: var(--birch);
+}
+
+.h-audit {
+  margin: 0 0 14px;
+  max-width: 46ch;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(20px, 2.7vw, 29px);
+  line-height: 1.1;
+  letter-spacing: -0.012em;
+  text-transform: uppercase;
+  color: var(--birch);
+}
+
+.h-contact {
+  margin: 0 0 18px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(34px, 7.4vw, 68px);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--birch);
+}
+
+.h-tier {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 1.12;
+  letter-spacing: -0.012em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.h-tier--feature {
+  font-size: 24px;
+  letter-spacing: -0.014em;
+  color: var(--birch);
+}
+
+.h-confirm {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(23px, 4.2vw, 30px);
+  line-height: 1.02;
+  letter-spacing: -0.014em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* Uppercase headline inside a card */
+.card-title {
+  margin: 0;
+  font-weight: 900;
+  font-size: clamp(18px, 2vw, 21px);
+  line-height: 1.06;
+  letter-spacing: -0.012em;
+  text-transform: uppercase;
+}
+
+/* Heavy short statement inside the numbered cards */
+.claim {
+  margin: auto 0 0;
+  font-weight: 800;
+  font-size: clamp(19px, 2.1vw, 23px);
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.body-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--body-ink);
+}
+
+.lede {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--body-ink);
+}
+.lede--pricing { margin-bottom: clamp(28px, 4.5vw, 44px); }
+.lede--audit {
+  margin-bottom: clamp(34px, 5.5vw, 52px);
+  max-width: 52ch;
+  color: var(--on-dark-86);
+}
+.lede--contact {
+  margin-bottom: 26px;
+  max-width: 42ch;
+  color: var(--on-dark-80);
+}
+.lede--confirm { max-width: 46ch; }
+
+.duck-lede {
+  margin: 0 0 clamp(26px, 4vw, 40px);
+  max-width: 30ch;
+  font-weight: 700;
+  font-size: clamp(18px, 2.1vw, 21px);
+  line-height: 1.35;
+  color: var(--on-dark-90);
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+
+.hero-mast {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  margin: 0 0 clamp(20px, 3vw, 30px);
+  animation: cdBeat 400ms 60ms ease-out both;
+}
+
+.hero-mark {
+  height: clamp(30px, 4.4vw, 44px);
+  width: auto;
+}
+
+.h-hero span { display: block; animation: cdBeat 380ms ease-out both; }
+.h-hero span:nth-child(1) { animation-delay: 140ms; }
+.h-hero span:nth-child(2) { animation-delay: 300ms; }
+.h-hero span:nth-child(3) { animation-delay: 460ms; }
+
+.hero-cta {
+  display: flex;
+  margin-top: clamp(40px, 6.5vw, 68px);
+  animation: cdBeat 380ms 620ms ease-out both;
+}
+
+@keyframes cdBeat {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-btn);
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 17px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--stamp) var(--stamp) 0 var(--ink);
+  transition: transform 140ms ease-out, box-shadow 140ms ease-out;
+}
+/* The "stamp" press — was a Design-only style-hover attribute. */
+.btn:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.btn--paper {
+  background: var(--birch);
+  color: var(--ink);
+  padding: 16px 28px;
+}
+.btn--paper:hover { color: var(--ink); }
+
+.btn--mallard {
+  background: var(--mallard);
+  color: var(--birch);
+  padding: 15px 28px;
+}
+.btn--mallard:hover { color: var(--birch); }
+
+/* ── Cards ────────────────────────────────────────────────── */
+
+.card {
+  background: var(--birch-card);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-card);
+  box-shadow: var(--stamp) var(--stamp) 0 var(--ink);
+  padding: clamp(22px, 2.8vw, 32px);
+}
+
+/* Numbered "long game" cards */
+.card--claim {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Mallard-filled variant with an orange stamp */
+.card--mallard {
+  background: var(--mallard);
+  color: var(--birch);
+  box-shadow: var(--stamp) var(--stamp) 0 var(--beak);
+}
+.card--mallard .card-num { color: var(--on-dark-70); }
+.card--mallard .claim { color: var(--birch); }
+
+.card-num {
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  color: var(--mallard);
+}
+
+/* "Why the duck" cards sit on paper stock, not the lighter card fill */
+.card--birch {
+  background: var(--birch);
+  color: var(--ink);
+  display: grid;
+  gap: 10px;
+}
+
+.stack {
+  display: grid;
+  gap: clamp(16px, 2.2vw, 22px);
+}
+
+/* ── Grids ────────────────────────────────────────────────── */
+
+.grid--claims {
+  display: grid;
+  gap: clamp(18px, 2.4vw, 26px);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: stretch;
+}
+
+.grid--tiers {
+  display: grid;
+  gap: clamp(22px, 3vw, 30px);
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  align-items: stretch;
+}
+
+/* ── Pricing ──────────────────────────────────────────────── */
+
+.card--tier {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(26px, 3.4vw, 38px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.card--tier-feature {
+  background: var(--mallard);
+  color: var(--birch);
+  box-shadow: var(--stamp) var(--stamp) 0 var(--ink);
+}
+
+.tier-price {
+  margin: 0 0 22px;
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--mallard);
+}
+.tier-price--accent { color: var(--beak); }
+
+.tier-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--body-ink);
+}
+.tier-list--on-dark { color: var(--on-dark-90); }
+
+/* ── FAQ ──────────────────────────────────────────────────── */
+
+.card--faq {
+  margin-top: clamp(36px, 6vw, 60px);
+  padding: clamp(26px, 4.6vw, 48px);
+  box-shadow: 4px 4px 0 var(--mallard);
+}
+
+.faq-list {
+  display: grid;
+  border-bottom: 2px solid var(--ink);
+}
+
+.faq-item { border-top: 2px solid var(--ink); }
+
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 0;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--ink);
+}
+.faq-q::-webkit-details-marker { display: none; }
+
+.faq-mark {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  color: var(--mallard);
+}
+.faq-q svg { transition: transform 160ms ease-out; }
+.faq-item[open] .faq-q svg { transform: rotate(180deg); }
+
+.faq-a {
+  margin: 0 0 20px;
+  max-width: 60ch;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--body-ink);
+}
+
+/* ── Form ─────────────────────────────────────────────────── */
+
+.card--form {
+  max-width: 720px;
+  background: var(--birch);
+  color: var(--ink);
+  padding: clamp(26px, 4.4vw, 44px);
+}
+
+.form {
+  display: grid;
+  gap: 20px;
+}
+
+.field {
+  display: grid;
+  gap: 7px;
+}
+
+.field-label {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.input {
+  font-family: inherit;
+  font-size: 16px;
+  padding: 13px 14px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-field);
+  background: var(--birch-card);
+  color: var(--ink);
+}
+.input--area { resize: vertical; }
+
+.btn--submit { justify-self: start; }
+
+/* Honeypot — kept out of the layout and out of the tab order. */
+.hp {
+  display: none;
+}
+
+/* ── Confirmation (success page) ──────────────────────────── */
+
+/* Standalone page, so the section carries the whole viewport rather than
+   leaving the page ground showing under a short block. */
+.section--success {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+}
+
+.confirm {
+  display: grid;
+  gap: 14px;
+  padding: clamp(12px, 3vw, 28px) 0;
+}
+.confirm-mark {
+  width: 40px;
+  height: auto;
+}
+
+/* ── Contact + footer ─────────────────────────────────────── */
+
+.email-link {
+  display: inline-block;
+  font-weight: 900;
+  font-size: clamp(20px, 4.2vw, 32px);
+  letter-spacing: -0.03em;
+  color: var(--beak);
+  text-decoration: none;
+  border-bottom: 3px solid var(--beak);
+  padding-bottom: 4px;
+}
+.email-link:hover {
+  color: var(--birch);
+  border-color: var(--birch);
+}
+
+.site-footer {
+  margin-top: clamp(48px, 8vw, 84px);
+  padding-top: 24px;
+  border-top: 2px solid var(--on-dark-rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  align-items: center;
+}
+
+.footer-mark {
+  width: 30px;
+  height: auto;
+}
+
+.footer-note {
+  margin: 0;
+  font-size: 14px;
+  color: var(--on-dark-60);
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.footer-link {
+  font-size: 14px;
+  color: var(--on-dark-72);
+  text-decoration: none;
+  border-bottom: 1px solid var(--on-dark-hairline);
+}
+/* The export's style-hover changed the text colour only — the hairline
+   underneath keeps its resting tint. */
+.footer-link:hover { color: var(--birch); }
+
+/* ── Motion ───────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  html { scroll-behavior: auto; }
+}

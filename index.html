@@ -1,24 +1,248 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Creative Duck — a boutique advertising studio. Better briefs. Better ads. Simpler than you think." />
-    <title>Creative Duck — Boutique Advertising Studio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <!-- Hidden static form so Netlify detects it at build time -->
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <textarea name="message"></textarea>
-    </form>
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<title>Madebyduck — Your advertiser</title>
+<meta name="description" content="A one-studio advertising practice. Brand strategy and ad creative on a monthly retainer, built to get you noticed, remembered and known.">
+
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+
+<!-- PLACEHOLDER: confirm the production domain before launch. -->
+<link rel="canonical" href="https://madebyduck.com.au/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Madebyduck">
+<meta property="og:title" content="Madebyduck — Your advertiser">
+<meta property="og:description" content="A one-studio advertising practice. Brand strategy and ad creative on a monthly retainer, built to get you noticed, remembered and known.">
+<meta property="og:url" content="https://madebyduck.com.au/">
+<meta property="og:image" content="https://madebyduck.com.au/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Madebyduck wordmark on a deep green ground.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+
+<div class="page">
+
+  <main>
+
+    <section class="section section--hero">
+      <div class="grain grain--dark" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="hero-mast">
+          <img class="hero-mark" src="/assets/horizontal-speculum-birch.png" alt="Madebyduck" width="2084" height="1094">
+          <p class="eyebrow eyebrow--on-dark eyebrow--lead">Madebyduck. Your advertiser.</p>
+        </div>
+        <h1 class="h-hero">
+          <span>Get noticed.</span>
+          <span>Get remembered.</span>
+          <span class="accent">Get known.</span>
+        </h1>
+        <div class="hero-cta">
+          <a class="btn btn--paper" href="#duck">See the thinking
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper">
+      <div class="grain grain--light" aria-hidden="true"></div>
+      <div class="wrap">
+        <p class="eyebrow">The case for advertising</p>
+        <h2 class="h-xl">Advertising is a <span class="accent">long game.</span></h2>
+        <div class="grid--claims">
+          <div class="card card--claim">
+            <span class="card-num">01</span>
+            <p class="claim">Advertising isn't only about sales.</p>
+          </div>
+          <div class="card card--claim">
+            <span class="card-num">02</span>
+            <p class="claim">It's about being remembered.</p>
+          </div>
+          <div class="card card--claim card--mallard">
+            <span class="card-num">03</span>
+            <p class="claim">That's the <span class="accent">long game.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--mallard" id="duck">
+      <div class="grain grain--dark" aria-hidden="true"></div>
+      <div class="wrap wrap--split">
+        <div>
+          <h2 class="h-2xl">Why the <span class="accent">duck.</span></h2>
+          <p class="duck-lede">One studio, one set of hands, on your advertising every month.</p>
+        </div>
+        <div class="stack">
+          <div class="card card--birch">
+            <p class="eyebrow eyebrow--sm">The thinking</p>
+            <p class="card-title">The brand first, then the ads.</p>
+            <p class="body-text">Not a look. A proper read on what you sell and who's buying it. The better I know the brand, the better the ads get.</p>
+          </div>
+          <div class="card card--birch">
+            <p class="eyebrow eyebrow--sm">Every ad has a job</p>
+            <p class="card-title">Something to say, someone to move.</p>
+            <p class="body-text">A good looking ad is not the same as a good ad. We go for both.</p>
+          </div>
+          <div class="card card--birch">
+            <p class="eyebrow eyebrow--sm">Your advertiser</p>
+            <p class="card-title">Your advertising is handled.</p>
+            <p class="body-text">No re-explaining yourself, no starting from scratch. You brief me, and you go back to running the business.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper section--pricing">
+      <div class="grain grain--light" aria-hidden="true"></div>
+      <div class="wrap">
+        <h2 class="eyebrow eyebrow--tight">Pricing</h2>
+        <p class="lede lede--pricing">Monthly. Cancel with 30 days notice.</p>
+
+        <div class="grid--tiers">
+          <div class="card card--tier">
+            <h3 class="h-tier">Starter</h3>
+            <p class="tier-price">from $1,500/mo</p>
+            <ul class="tier-list">
+              <li>Three briefs a month.</li>
+              <li>Brand strategy set at onboarding.</li>
+              <li>Social, display and EDM.</li>
+            </ul>
+          </div>
+          <div class="card card--tier card--tier-feature">
+            <h3 class="h-tier h-tier--feature">Studio</h3>
+            <p class="tier-price tier-price--accent">from $3,000/mo</p>
+            <ul class="tier-list tier-list--on-dark">
+              <li>Six briefs a month.</li>
+              <li>Strategy revisited every two months.</li>
+              <li>Kickoff call each month.</li>
+              <li>Social, display and EDM.</li>
+            </ul>
+          </div>
+          <div class="card card--tier">
+            <h3 class="h-tier">Partner</h3>
+            <p class="tier-price">by application</p>
+            <ul class="tier-list">
+              <li>Built around what the brand needs.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card card--faq">
+          <h3 class="eyebrow eyebrow--wide">Questions before you ask them</h3>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary class="faq-q">What's a brief?
+                <span class="faq-mark" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+              </summary>
+              <p class="faq-a">One idea in one format family. Social, display or EDM. A new direction is a new brief.</p>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">What counts as a revision?
+                <span class="faq-mark" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+              </summary>
+              <p class="faq-a">Any change within the direction you approved. No cap on those.</p>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">What if I need more?
+                <span class="faq-mark" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+              </summary>
+              <p class="faq-a">Extra briefs are $400 each.</p>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">What happens in month one?
+                <span class="faq-mark" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+              </summary>
+              <p class="faq-a">Full price, fewer briefs. Most of the first month goes into learning the brand, and that pays off every month after.</p>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">Can I cancel?
+                <span class="faq-mark" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+              </summary>
+              <p class="faq-a">Any time, with 30 days written notice.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--audit" id="audit">
+      <div class="grain grain--dark" aria-hidden="true"></div>
+      <div class="wrap">
+        <p class="eyebrow eyebrow--on-dark eyebrow--audit">The free audit</p>
+        <h2 class="h-audit">Send me your brand and I'll tell you what your advertising is doing, what it isn't, and <span class="accent">what I'd change.</span></h2>
+        <p class="lede lede--audit">Written, specific to you, no obligation. Yours either way.</p>
+
+        <div class="card card--form">
+          <form class="form" name="audit" method="POST" action="/success" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="audit">
+            <p class="hp"><label>Don't fill this in: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+            <div class="field">
+              <label class="field-label" for="f-name">Name</label>
+              <input class="input" id="f-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="f-business">Business</label>
+              <input class="input" id="f-business" name="business" type="text" autocomplete="organization" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="f-web">Website or socials</label>
+              <input class="input" id="f-web" name="website" type="text" inputmode="url" autocomplete="url" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="f-now">What you're running now</label>
+              <textarea class="input input--area" id="f-now" name="running" rows="4"></textarea>
+            </div>
+            <button class="btn btn--mallard btn--submit" type="submit">Get my audit
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="section section--contact">
+    <div class="grain grain--dark" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow eyebrow--on-dark eyebrow--contact">Contact</p>
+      <h2 class="h-contact">Talk to the duck</h2>
+      <p class="lede lede--contact">Not ready for an audit? But wanna talk. Email me.</p>
+      <!-- PLACEHOLDER: confirm this address is correct. -->
+      <a class="email-link" href="mailto:hello@madebyduck.com.au">hello@madebyduck.com.au</a>
+
+      <footer class="site-footer">
+        <img class="footer-mark" src="/assets/icon-birch.png" alt="Madebyduck duck mark" width="2084" height="2084">
+        <!-- PLACEHOLDER: replace with the real ABN. -->
+        <p class="footer-note">ABN to come</p>
+        <div class="footer-links">
+          <!-- PLACEHOLDER: point these at the real policy pages. -->
+          <a class="footer-link" href="#">Privacy policy</a>
+          <a class="footer-link" href="#">Website terms</a>
+        </div>
+      </footer>
+    </div>
+  </section>
+
+</div>
+
+</body>
 </html>

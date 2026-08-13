@@ -1,16 +1,51 @@
-# React + Vite
+# Madebyduck
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The Madebyduck site. Hand-written HTML and CSS, no build step, no framework,
+deployed to Netlify from the repo root.
 
-Currently, two official plugins are available:
+Converted from the Claude Design export `Madebyduck Site.dc.html`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Layout
 
-## React Compiler
+```
+index.html      the site
+success.html    audit form confirmation (form posts here)
+css/site.css    all styles, including @font-face
+fonts/          self-hosted woff2 (Figtree variable, EB Garamond italic)
+assets/         brand marks, favicon, Open Graph card
+netlify.toml    publish root, /success rewrite, font cache headers
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Local preview
 
-## Expanding the ESLint configuration
+No tooling required — open `index.html`, or serve the folder so the
+root-relative paths resolve:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+python3 -m http.server 8000
+```
+
+The audit form only works once deployed; Netlify handles submissions.
+
+## Fonts
+
+Figtree is a variable font, so one file covers every weight used
+(400/700/800/900). EB Garamond is used in italic 400 only. Both are the
+latin and latin-ext subsets pulled from Google Fonts and served from
+`fonts/`, so the page makes no third-party requests.
+
+## Placeholders
+
+Search for `PLACEHOLDER` in `index.html`:
+
+- the footer ABN
+- the privacy policy and website terms links
+- the production domain in the canonical and Open Graph URLs
+- the contact email address, to confirm
+
+## Known gap
+
+The audit form collects name, business, website and current activity, but no
+email address, so a submission arrives with no way to reply to it. Adding a
+field changes the design, so it was left as exported — see the conversion
+notes.
