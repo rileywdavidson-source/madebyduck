@@ -250,15 +250,50 @@ a { color: inherit; }
   line-height: 1;
 }
 
-.masthead__link {
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.9rem, 3.5vw, 2rem);
+}
+
+.nav__link {
   font-size: var(--fs-label);
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   text-decoration: none;
-  border-bottom: var(--edge) solid var(--orange);
-  padding-bottom: 3px;
   line-height: 1;
+  padding-bottom: 3px;
+  border-bottom: var(--edge) solid transparent;
+  white-space: nowrap;
+}
+/* Birch underline says you are here. Orange says this is the action. */
+.nav__link[aria-current="page"] { border-bottom-color: var(--birch); }
+.nav__link--cta { border-bottom-color: var(--orange); }
+.nav__link--cta[aria-current="page"] { border-bottom-color: var(--orange); }
+
+
+/* ---------- Hand-off band at the foot of a page ---------- */
+
+.cta { padding-block: 1.375rem clamp(2.75rem, 7vw, 5rem); }
+.cta .eyebrow { margin-bottom: var(--sp-md); }
+
+.cta__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+.cta__alt {
+  font-size: var(--fs-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  line-height: 1;
+  padding-bottom: 3px;
+  border-bottom: var(--edge) solid var(--birch);
 }
 
 
@@ -347,9 +382,10 @@ a { color: inherit; }
 
 
 /* Five frames over one pass, each owning 20% of the run, then it holds on
-   the resting card. The frames cross over each other. */
+   the resting card. Fades are ~0.12s in and ~0.16s out, the same snap the
+   four-second version had. The hold is what got longer, not the transition. */
 @media (prefers-reduced-motion: no-preference) {
-  .frame { animation: var(--banner-run) ease-out both; }
+  .frame { animation: var(--banner-run) linear both; }
   .frame--1 { animation-name: fr1; }
   .frame--2 { animation-name: fr2; }
   .frame--3 { animation-name: fr3; }
@@ -358,44 +394,44 @@ a { color: inherit; }
   /* Two tracks: the fade, plus visibility on its own discrete one so the
      resting card's CTA is not focusable before it arrives. Visibility
      resolves to `visible` for any progress between two keyframes, so it
-     needs steps(1, end) rather than the shared easing. */
+     needs steps(1, end) rather than the shared timing. */
   .frame--5 {
     animation-name: fr5, vis5;
-    animation-timing-function: ease-out, steps(1, end);
+    animation-timing-function: linear, steps(1, end);
   }
 }
 
 @keyframes fr1 {
-  0%   { opacity: 0; transform: translateY(0.12em); }
-  3%   { opacity: 1; transform: translateY(0); }
-  17%  { opacity: 1; transform: translateY(0); }
-  20%  { opacity: 0; transform: translateY(-0.08em); }
-  100% { opacity: 0; transform: translateY(-0.08em); }
+  0%    { opacity: 0; transform: translateY(0.12em); }
+  1.7%  { opacity: 1; transform: translateY(0); }
+  17.7% { opacity: 1; transform: translateY(0); }
+  20%   { opacity: 0; transform: translateY(-0.08em); }
+  100%  { opacity: 0; transform: translateY(-0.08em); }
 }
 @keyframes fr2 {
   0%, 20% { opacity: 0; transform: translateY(0.12em); }
-  23%  { opacity: 1; transform: translateY(0); }
-  37%  { opacity: 1; transform: translateY(0); }
-  40%  { opacity: 0; transform: translateY(-0.08em); }
-  100% { opacity: 0; transform: translateY(-0.08em); }
+  21.7%   { opacity: 1; transform: translateY(0); }
+  37.7%   { opacity: 1; transform: translateY(0); }
+  40%     { opacity: 0; transform: translateY(-0.08em); }
+  100%    { opacity: 0; transform: translateY(-0.08em); }
 }
 @keyframes fr3 {
   0%, 40% { opacity: 0; transform: translateY(0.12em); }
-  43%  { opacity: 1; transform: translateY(0); }
-  57%  { opacity: 1; transform: translateY(0); }
-  60%  { opacity: 0; transform: translateY(-0.08em); }
-  100% { opacity: 0; transform: translateY(-0.08em); }
+  41.7%   { opacity: 1; transform: translateY(0); }
+  57.7%   { opacity: 1; transform: translateY(0); }
+  60%     { opacity: 0; transform: translateY(-0.08em); }
+  100%    { opacity: 0; transform: translateY(-0.08em); }
 }
 @keyframes fr4 {
   0%, 60% { opacity: 0; transform: translateY(0.12em); }
-  63%  { opacity: 1; transform: translateY(0); }
-  77%  { opacity: 1; transform: translateY(0); }
-  80%  { opacity: 0; transform: translateY(-0.08em); }
-  100% { opacity: 0; transform: translateY(-0.08em); }
+  61.7%   { opacity: 1; transform: translateY(0); }
+  77.7%   { opacity: 1; transform: translateY(0); }
+  80%     { opacity: 0; transform: translateY(-0.08em); }
+  100%    { opacity: 0; transform: translateY(-0.08em); }
 }
 @keyframes fr5 {
-  0%, 80%   { opacity: 0; transform: translateY(0.12em); }
-  85%, 100% { opacity: 1; transform: translateY(0); }
+  0%, 80%    { opacity: 0; transform: translateY(0.12em); }
+  81.7%,100% { opacity: 1; transform: translateY(0); }
 }
 @keyframes vis5 { 0% { visibility: hidden; } 80% { visibility: visible; } }
 

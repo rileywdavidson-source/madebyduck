@@ -6,8 +6,9 @@
 
 <title>Madebyduck. Your advertiser.</title>
 
-<!-- LABEL I WROTE: meta description. Built from the positioning and the Why the duck line. -->
+<!-- LABEL I WROTE: meta description. -->
 <meta name="description" content="Madebyduck. Your advertiser. One studio, one set of hands, on your advertising every month.">
+<link rel="canonical" href="https://madebyduck.com.au/">
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/favicon.svg">
@@ -19,7 +20,7 @@
 <meta property="og:site_name" content="Madebyduck">
 <meta property="og:url" content="https://madebyduck.com.au/">
 <meta property="og:title" content="Madebyduck. Your advertiser.">
-<meta property="og:description" content="One studio, one set of hands, on your advertising every month.">
+<meta property="og:description" content="Madebyduck. Your advertiser. One studio, one set of hands, on your advertising every month.">
 <meta property="og:image" content="https://madebyduck.com.au/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -36,16 +37,18 @@
 
 <header class="masthead">
   <!-- LOGO PLACEHOLDER. Replace the text wordmark below with the supplied logo file:
-       <a class="wordmark" href="#top"><img src="/logo.svg" alt="Madebyduck" width="164" height="30"></a>
+       <a class="wordmark" href="/"><img src="/logo.svg" alt="Madebyduck" width="164" height="30"></a>
        It stays a logo. Not cropped, not scaled up as decoration, not used as a bullet. -->
-  <a class="wordmark" href="#top">Madebyduck</a>
-  <a class="masthead__link" href="#audit">Get my audit</a>
+  <a class="wordmark" href="/">Madebyduck</a>
+  <nav class="nav" aria-label="Main">
+    <a class="nav__link" href="/pricing/">Pricing</a>
+    <a class="nav__link nav__link--cta" href="/audit/">Get my audit</a>
+  </nav>
 </header>
 
 <main id="main">
 
-  <!-- ============ 1. HERO. A display banner that plays its frames once and rests on the end frame. ============ -->
-  <section class="hero">
+<section class="hero">
     <div class="banner">
       <span class="banner__tick banner__tick--tl" aria-hidden="true"></span>
       <span class="banner__tick banner__tick--tr" aria-hidden="true"></span>
@@ -66,7 +69,7 @@
             <p class="beat beat--sm">Get remembered.</p>
             <p class="beat beat--sm beat--land">Get known.</p>
             <h1 class="endframe__mark">Madebyduck.</h1>
-            <a class="btn" href="#audit">Get my audit <svg class="btn__arrow" viewBox="0 0 18 12" aria-hidden="true" focusable="false"><path d="M0 6h15M10.5 1.5 15 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg></a>
+            <a class="btn" href="/audit/">Get my audit <svg class="btn__arrow" viewBox="0 0 18 12" aria-hidden="true" focusable="false"><path d="M0 6h15M10.5 1.5 15 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg></a>
           </div>
         </div>
       </div>
@@ -74,8 +77,7 @@
   </section>
 
 
-  <!-- ============ 2. THE CASE FOR ADVERTISING ============ -->
-  <section class="section section--chestnut longgame">
+<section class="section section--chestnut longgame">
     <!-- LABEL I WROTE: eyebrow "Advertising". Your label was "The case for advertising", too long for an eyebrow. -->
     <p class="eyebrow">Advertising</p>
     <div class="longgame__grid">
@@ -85,8 +87,7 @@
   </section>
 
 
-  <!-- ============ 3. WHY THE DUCK. Three beliefs, set in the three formats I make. ============ -->
-  <section class="section section--birch duck">
+<section class="section section--birch duck">
     <!-- LABEL I WROTE: eyebrow "The duck". Your label was "Why the duck", three words. -->
     <p class="eyebrow">The duck</p>
     <h2 class="d2 duck__head">One studio, one set of hands, on your advertising every&nbsp;month.</h2>
@@ -128,136 +129,16 @@
   </section>
 
 
-  <!-- ============ 4. PRICING ============ -->
-  <section class="section section--blue pricing">
-    <p class="eyebrow">Pricing</p>
-    <h2 class="d2 pricing__head">Monthly. Cancel with 30 days&nbsp;notice.</h2>
-
-    <div class="tiers">
-
-      <article class="tier">
-        <h3 class="label tier__name">Starter</h3>
-        <p class="d3 tier__price">from $1,500<span class="tier__per">/mo</span></p>
-        <ul class="tier__list">
-          <li>Three briefs a month.</li>
-          <li>Brand strategy set at onboarding.</li>
-          <li class="tier__formats">
-            <span class="ratios ratios--inline" aria-hidden="true"><i class="ratio ratio--social"></i><i class="ratio ratio--display"></i><i class="ratio ratio--edm"></i></span>
-            Social, display and EDM.
-          </li>
-        </ul>
-      </article>
-
-      <article class="tier tier--lead">
-        <h3 class="label tier__name">Studio</h3>
-        <p class="d3 tier__price">from $3,000<span class="tier__per">/mo</span></p>
-        <ul class="tier__list">
-          <li>Six briefs a month.</li>
-          <li>Strategy revisited every two months.</li>
-          <li>Kickoff call each month.</li>
-          <li class="tier__formats">
-            <span class="ratios ratios--inline" aria-hidden="true"><i class="ratio ratio--social"></i><i class="ratio ratio--display"></i><i class="ratio ratio--edm"></i></span>
-            Social, display and EDM.
-          </li>
-        </ul>
-      </article>
-
-      <article class="tier">
-        <h3 class="label tier__name">Partner</h3>
-        <p class="d3 tier__price">by application</p>
-        <ul class="tier__list">
-          <li>Built around what the brand needs.</li>
-        </ul>
-      </article>
-
-    </div>
-  </section>
-
-
-  <!-- ============ 5. QUESTIONS. All five open. No accordion. ============ -->
-  <section class="section section--birch questions">
-    <h2 class="d2 questions__head">Questions</h2>
-    <div class="qs">
-      <div class="q">
-        <h3 class="q__q">What's a brief?</h3>
-        <p class="body q__a">One idea in one format family. Social, display or EDM. A new direction is a new brief.</p>
-      </div>
-      <div class="q">
-        <h3 class="q__q">What counts as a revision?</h3>
-        <p class="body q__a">Any change within the direction you approved. No cap on those.</p>
-      </div>
-      <div class="q">
-        <h3 class="q__q">What if I need more?</h3>
-        <p class="body q__a">Extra briefs are $400 each.</p>
-      </div>
-      <div class="q">
-        <h3 class="q__q">What happens in month one?</h3>
-        <p class="body q__a">Full price, fewer briefs. Most of the first month goes into learning the brand, and that pays off every month after.</p>
-      </div>
-      <div class="q">
-        <h3 class="q__q">Can I cancel?</h3>
-        <p class="body q__a">Any time, with 30 days written notice.</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ============ 6. THE FREE AUDIT ============ -->
-  <section class="section section--green audit" id="audit">
-    <!-- LABEL I WROTE: eyebrow "The audit". Your label was "The free audit", three words. -->
-    <p class="eyebrow">The audit</p>
-    <div class="audit__grid">
-
-      <div class="audit__pitch">
-        <h2 class="d3 audit__head">Send me your brand and I'll tell you what your advertising is doing, what it isn't, and what I'd change.</h2>
-        <p class="body audit__note">Written, specific to you, no obligation. Yours either way.</p>
-      </div>
-
-      <div class="audit__box">
-
-        <div class="sent" id="audit-sent" role="status" tabindex="-1">
-          <p class="sent__text">That came through. I'll read it properly and reply within two business days.</p>
-        </div>
-
-        <form class="form" name="audit" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/#audit-sent">
-          <input type="hidden" name="form-name" value="audit">
-
-          <p class="hp">
-            <label for="bot-field">Leave this field empty</label>
-            <input id="bot-field" name="bot-field" type="text" tabindex="-1" autocomplete="off">
-          </p>
-
-          <div class="field">
-            <label class="field__label" for="f-name">Name</label>
-            <input class="field__input" id="f-name" name="name" type="text" autocomplete="name" required>
-          </div>
-
-          <div class="field">
-            <label class="field__label" for="f-business">Business</label>
-            <input class="field__input" id="f-business" name="business" type="text" autocomplete="organization" required>
-          </div>
-
-          <div class="field">
-            <label class="field__label" for="f-web">Website or socials</label>
-            <input class="field__input" id="f-web" name="website-or-socials" type="text" autocomplete="url" required>
-          </div>
-
-          <div class="field">
-            <label class="field__label" for="f-running">What you're running now</label>
-            <textarea class="field__input field__input--area" id="f-running" name="what-youre-running-now" rows="4"></textarea>
-          </div>
-
-          <button class="btn btn--full" type="submit">Get my audit <svg class="btn__arrow" viewBox="0 0 18 12" aria-hidden="true" focusable="false"><path d="M0 6h15M10.5 1.5 15 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg></button>
-        </form>
-
-      </div>
+  <!-- LABEL I WROTE: eyebrow "Next". -->
+  <section class="section section--green cta">
+    <p class="eyebrow">Next</p>
+    <div class="cta__row">
+      <a class="btn" href="/audit/">Get my audit <svg class="btn__arrow" viewBox="0 0 18 12" aria-hidden="true" focusable="false"><path d="M0 6h15M10.5 1.5 15 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg></a>
+      <a class="cta__alt" href="/pricing/">Pricing</a>
     </div>
   </section>
 
 </main>
-
-
-<!-- ============ 7. CONTACT ============ -->
 <footer class="section section--chestnut contact">
   <p class="eyebrow">Contact</p>
   <div class="contact__grid">
@@ -275,33 +156,5 @@
     <p class="legal__item"><a href="#terms-placeholder">Website terms</a></p>
   </div>
 </footer>
-
-<!-- First-party, no build step. Progressive enhancement only: posts the form in place so the
-     success state shows without leaving the page. With JS off, Netlify redirects to /#audit-sent
-     and the same :target styling handles it. -->
-<script>
-(function () {
-  var form = document.querySelector('.form');
-  if (!form || !window.fetch) return;
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var btn = form.querySelector('button[type=submit]');
-    if (btn) { btn.disabled = true; }
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
-    }).then(function () {
-      window.location.hash = 'audit-sent';
-      var sent = document.getElementById('audit-sent');
-      if (sent) { sent.focus(); }
-    }).catch(function () {
-      if (btn) { btn.disabled = false; }
-      form.submit();
-    });
-  });
-})();
-</script>
-
 </body>
 </html>

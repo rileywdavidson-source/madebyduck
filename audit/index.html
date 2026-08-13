@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Madebyduck. The free audit.</title>
+
+<!-- LABEL I WROTE: meta description. -->
+<meta name="description" content="Send me your brand and I'll tell you what your advertising is doing, what it isn't, and what I'd change.">
+<link rel="canonical" href="https://madebyduck.com.au/audit/">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<meta name="theme-color" content="#1B5533">
+
+<!-- PLACEHOLDER: og:url and og:image assume the live domain is madebyduck.com.au.
+     PLACEHOLDER: /og.png does not exist yet. Needs a 1200x630 PNG. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Madebyduck">
+<meta property="og:url" content="https://madebyduck.com.au/audit/">
+<meta property="og:title" content="Madebyduck. The free audit.">
+<meta property="og:description" content="Send me your brand and I'll tell you what your advertising is doing, what it isn't, and what I'd change.">
+<meta property="og:image" content="https://madebyduck.com.au/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Madebyduck. Your advertiser.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="/fonts/figtree-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+</head>
+
+<body id="top">
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <!-- LOGO PLACEHOLDER. Replace the text wordmark below with the supplied logo file:
+       <a class="wordmark" href="/"><img src="/logo.svg" alt="Madebyduck" width="164" height="30"></a>
+       It stays a logo. Not cropped, not scaled up as decoration, not used as a bullet. -->
+  <a class="wordmark" href="/">Madebyduck</a>
+  <nav class="nav" aria-label="Main">
+    <a class="nav__link" href="/pricing/">Pricing</a>
+    <a class="nav__link nav__link--cta" href="/audit/" aria-current="page">Get my audit</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="section section--green audit">
+    <!-- LABEL I WROTE: eyebrow "The audit". Your label was "The free audit", three words. -->
+    <p class="eyebrow">The audit</p>
+    <div class="audit__grid">
+
+      <div class="audit__pitch">
+        <h1 class="d3 audit__head">Send me your brand and I'll tell you what your advertising is doing, what it isn't, and what I'd change.</h1>
+        <p class="body audit__note">Written, specific to you, no obligation. Yours either way.</p>
+      </div>
+
+      <div class="audit__box">
+
+        <div class="sent" id="audit-sent" role="status" tabindex="-1">
+          <p class="sent__text">That came through. I'll read it properly and reply within two business days.</p>
+        </div>
+
+        <form class="form" name="audit" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/audit/#audit-sent">
+          <input type="hidden" name="form-name" value="audit">
+
+          <p class="hp">
+            <label for="bot-field">Leave this field empty</label>
+            <input id="bot-field" name="bot-field" type="text" tabindex="-1" autocomplete="off">
+          </p>
+
+          <div class="field">
+            <label class="field__label" for="f-name">Name</label>
+            <input class="field__input" id="f-name" name="name" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="f-business">Business</label>
+            <input class="field__input" id="f-business" name="business" type="text" autocomplete="organization" required>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="f-web">Website or socials</label>
+            <input class="field__input" id="f-web" name="website-or-socials" type="text" autocomplete="url" required>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="f-running">What you're running now</label>
+            <textarea class="field__input field__input--area" id="f-running" name="what-youre-running-now" rows="4"></textarea>
+          </div>
+
+          <button class="btn btn--full" type="submit">Get my audit <svg class="btn__arrow" viewBox="0 0 18 12" aria-hidden="true" focusable="false"><path d="M0 6h15M10.5 1.5 15 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg></button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer class="section section--chestnut contact">
+  <p class="eyebrow">Contact</p>
+  <div class="contact__grid">
+    <div>
+      <h2 class="d2 contact__head">Talk to the duck.</h2>
+      <p class="body contact__body">Not ready for an audit? But wanna talk. Email me.</p>
+    </div>
+    <a class="contact__email" href="mailto:hello@madebyduck.com.au">hello@madebyduck.com.au</a>
+  </div>
+
+  <div class="legal">
+    <!-- PLACEHOLDERS: ABN number, privacy policy URL, website terms URL. -->
+    <p class="legal__item">ABN 00 000 000 000</p>
+    <p class="legal__item"><a href="#privacy-placeholder">Privacy policy</a></p>
+    <p class="legal__item"><a href="#terms-placeholder">Website terms</a></p>
+  </div>
+</footer>
+<!-- First-party, no build step. Progressive enhancement only: posts the form in place so the
+     success state shows without leaving the page. With JS off, Netlify redirects to /#audit-sent
+     and the same :target styling handles it. -->
+<script>
+(function () {
+  var form = document.querySelector('.form');
+  if (!form || !window.fetch) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = form.querySelector('button[type=submit]');
+    if (btn) { btn.disabled = true; }
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function () {
+      window.location.hash = 'audit-sent';
+      var sent = document.getElementById('audit-sent');
+      if (sent) { sent.focus(); }
+    }).catch(function () {
+      if (btn) { btn.disabled = false; }
+      form.submit();
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

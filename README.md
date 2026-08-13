@@ -1,15 +1,28 @@
 # Madebyduck
 
-Single page. Hardcoded HTML and CSS. No framework, no build step, no dependencies.
+Three pages. Hardcoded HTML and CSS. No framework, no build step, no dependencies.
 Netlify serves the repo root as-is.
 
 ```
-index.html      the whole page
-styles.css      the whole design system
-favicon.svg     PLACEHOLDER, stands in until the logo files land
-fonts/          self-hosted woff2, latin subset only
-netlify.toml    publish = "." plus cache headers for the fonts
+index.html            home: the banner, the case for advertising, why the duck
+pricing/index.html    pricing: the three retainers, then all five questions
+audit/index.html      the free audit: the pitch and the form
+styles.css            the whole design system, shared by all three
+favicon.svg           PLACEHOLDER, stands in until the logo files land
+fonts/                self-hosted woff2, latin subset only
+netlify.toml          publish = "." plus cache headers for the fonts
 ```
+
+Pages are directories, not `pricing.html`, so the URLs are `/pricing/` and `/audit/`
+with no redirect, and they resolve the same way locally as they do on Netlify.
+
+The pages run pitch, then qualify, then convert. Pricing sits one click from every page
+so people can rule themselves out on price before they email. The audit is the only
+call to action; every page ends pointing at it.
+
+**Header and footer are duplicated in all three files.** That is the cost of no build
+step. Styling is still one edit because it all lives in `styles.css`, but changing nav
+wording or the footer means the same edit three times.
 
 Preview locally with any static server, e.g. `python3 -m http.server 8000`.
 
@@ -50,15 +63,17 @@ self-hosted so there are no third-party requests at all. Figtree is preloaded.
 
 ## Labels not in the supplied copy
 
-Eyebrows: *Advertising*, *The duck*, *The audit*. The supplied section labels were too
-long for an eyebrow, which is one or two words. *Pricing* and *Contact* are yours.
+Eyebrows: *Advertising*, *The duck*, *The audit*, *Next*. The supplied section labels
+were too long for an eyebrow, which is one or two words. *Pricing* and *Contact* are
+yours. Page titles and meta descriptions are mine too.
 Format slugs: `Social 1080 x 1350`, `Display 300 x 250`, `EDM 600 wide`, plus the meta
 description. Change any of them in `index.html`.
 
 ## The form
 
-Netlify form named `audit`, with `data-netlify`, the hidden `form-name` input, and a
-`bot-field` honeypot. Success state is CSS: Netlify redirects to `/#audit-sent` and
+Lives on `/audit/`. Netlify form named `audit`, with `data-netlify`, the hidden
+`form-name` input, and a `bot-field` honeypot. Success state is CSS: Netlify
+redirects to `/audit/#audit-sent` and
 `:target` swaps the form for the confirmation. The small inline script posts the form in
 place so the page does not navigate. With JS off, the redirect path does the same job.
 
