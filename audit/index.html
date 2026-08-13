@@ -41,6 +41,7 @@
        It stays a logo. Not cropped, not scaled up as decoration, not used as a bullet. -->
   <a class="wordmark" href="/">Madebyduck</a>
   <nav class="nav" aria-label="Main">
+    <a class="nav__link" href="/why-the-duck/">Why the duck</a>
     <a class="nav__link" href="/pricing/">Pricing</a>
     <a class="nav__link nav__link--cta" href="/audit/" aria-current="page">Get my audit</a>
   </nav>
@@ -99,17 +100,23 @@
     </div>
   </section>
 
-</main>
-<footer class="section section--chestnut contact">
-  <p class="eyebrow">Contact</p>
-  <div class="contact__grid">
-    <div>
-      <h2 class="d2 contact__head">Talk to the duck.</h2>
-      <p class="body contact__body">Not ready for an audit? But wanna talk. Email me.</p>
-    </div>
-    <a class="contact__email" href="mailto:hello@madebyduck.com.au">hello@madebyduck.com.au</a>
-  </div>
 
+  <section class="section section--blue contact">
+    <p class="eyebrow">Contact</p>
+    <div class="contact__grid">
+      <div>
+        <h2 class="d2 contact__head">Talk to the duck.</h2>
+        <p class="body contact__body">Not ready for an audit? But wanna talk. Email me.</p>
+      </div>
+      <a class="contact__email" href="mailto:hello@madebyduck.com.au">hello@madebyduck.com.au</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- The full contact block sits directly above on this page, so the footer
+     drops its get in touch rather than repeating the same address twice. -->
+<footer class="foot foot--bare">
   <div class="legal">
     <!-- PLACEHOLDERS: ABN number, privacy policy URL, website terms URL. -->
     <p class="legal__item">ABN 00 000 000 000</p>
@@ -117,6 +124,7 @@
     <p class="legal__item"><a href="#terms-placeholder">Website terms</a></p>
   </div>
 </footer>
+
 <!-- First-party, no build step. Progressive enhancement only: posts the form in place so the
      success state shows without leaving the page. With JS off, Netlify redirects to /#audit-sent
      and the same :target styling handles it. -->

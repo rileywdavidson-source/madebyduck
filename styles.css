@@ -230,11 +230,14 @@ a { color: inherit; }
 
 /* ---------- Masthead ---------- */
 
+/* Three nav items plus the wordmark do not fit on one line on a phone,
+   so the nav drops to its own row and stays left aligned. */
 .masthead {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.875rem 1.25rem;
   background: var(--mallard);
   color: var(--birch);
   --focus: var(--birch);
@@ -683,7 +686,8 @@ a { color: inherit; }
 
 
 /* =========================================================================
-   7. Contact.
+   7. Contact. A full block on the audit page, and a small one at the
+      bottom of every page.
    ========================================================================= */
 
 .contact__head { max-width: 12ch; }
@@ -713,11 +717,49 @@ a { color: inherit; }
   .contact__email { grid-column: 8 / 13; margin-top: 0; }
 }
 
+
+/* The small get in touch. Every page ends on it. */
+
+.foot {
+  position: relative;
+  background: var(--chestnut);
+  color: var(--birch);
+  --focus: var(--birch);
+  padding-inline: max(var(--gut), (100% - var(--maxw)) / 2);
+  padding-block: 1.375rem clamp(1.75rem, 4vw, 2.5rem);
+}
+.foot::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: var(--edge);
+  background: var(--orange);
+}
+
+.foot__eyebrow { margin-bottom: var(--sp-sm); }
+
+.foot__email {
+  display: inline-block;
+  font-size: var(--fs-body);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  word-break: break-word;
+  text-decoration: none;
+  border-bottom: var(--edge) solid var(--orange);
+  padding-bottom: 0.15em;
+}
+
+/* On the audit page the contact block is already directly above. */
+.foot--bare { padding-block: 1.375rem clamp(1.75rem, 4vw, 2.5rem); }
+.foot--bare .legal { margin-top: 0; padding-top: 0; border-top: 0; }
+
 .legal {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1.75rem;
-  margin-top: var(--sp-lg);
+  margin-top: clamp(1.5rem, 4vw, 2.25rem);
   padding-top: var(--sp-sm);
   border-top: 1px solid rgba(255, 243, 214, 0.3);
   font-size: var(--fs-label);

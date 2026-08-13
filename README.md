@@ -1,28 +1,33 @@
 # Madebyduck
 
-Three pages. Hardcoded HTML and CSS. No framework, no build step, no dependencies.
-Netlify serves the repo root as-is.
+Four pages, one section each. Hardcoded HTML and CSS. No framework, no build step,
+no dependencies. Netlify serves the repo root as-is.
 
 ```
-index.html            home: the banner, the case for advertising, why the duck
-pricing/index.html    pricing: the three retainers, then all five questions
-audit/index.html      the free audit: the pitch and the form
-styles.css            the whole design system, shared by all three
-favicon.svg           PLACEHOLDER, stands in until the logo files land
-fonts/                self-hosted woff2, latin subset only
-netlify.toml          publish = "." plus cache headers for the fonts
+index.html                  home: the banner, then the case for advertising
+why-the-duck/index.html     the three beliefs, set in the three formats
+pricing/index.html          the three retainers, then all five questions
+audit/index.html            the free audit, the form, and contact
+styles.css                  the whole design system, shared by all four
+favicon.svg                 PLACEHOLDER, stands in until the logo files land
+fonts/                      self-hosted woff2, latin subset only
+netlify.toml                publish = "." plus cache headers for the fonts
 ```
 
-Pages are directories, not `pricing.html`, so the URLs are `/pricing/` and `/audit/`
-with no redirect, and they resolve the same way locally as they do on Netlify.
+Pages are directories, not `pricing.html`, so the URLs are clean with no redirect and
+resolve the same way locally as they do on Netlify.
 
-The pages run pitch, then qualify, then convert. Pricing sits one click from every page
-so people can rule themselves out on price before they email. The audit is the only
-call to action; every page ends pointing at it.
+Every page ends on a small get in touch: the email address and the legal line. The
+exception is `/audit/`, where the full contact block already sits directly above the
+footer, so the footer there drops to the legal line rather than repeating the address
+twice on one screen.
 
-**Header and footer are duplicated in all three files.** That is the cost of no build
+The audit is the only call to action. Every page ends pointing at it, and each one also
+points at the next page along: home to why the duck, why the duck to pricing.
+
+**Header and footer are duplicated in all four files.** That is the cost of no build
 step. Styling is still one edit because it all lives in `styles.css`, but changing nav
-wording or the footer means the same edit three times.
+wording or the footer means the same edit four times.
 
 Preview locally with any static server, e.g. `python3 -m http.server 8000`.
 
