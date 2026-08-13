@@ -24,6 +24,9 @@
 
 <link rel="preload" href="/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/site.css">
+
+<!-- Set before paint so the reveal states never flash unstyled. -->
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
@@ -32,7 +35,6 @@
   <main>
 
     <section class="section section--hero">
-      <div class="grain grain--dark" aria-hidden="true"></div>
       <div class="wrap">
         <div class="hero-mast">
           <img class="hero-mark" src="/assets/horizontal-speculum-birch.png" alt="Madebyduck" width="2084" height="1094">
@@ -52,20 +54,19 @@
     </section>
 
     <section class="section section--paper">
-      <div class="grain grain--light" aria-hidden="true"></div>
       <div class="wrap">
-        <p class="eyebrow">The case for advertising</p>
-        <h2 class="h-xl">Advertising is a <span class="accent">long game.</span></h2>
-        <div class="grid--claims">
-          <div class="card card--claim">
+        <p class="eyebrow reveal">The case for advertising</p>
+        <h2 class="h-xl reveal">Advertising is a <span class="accent">long game.</span></h2>
+        <div class="grid--claims stagger">
+          <div class="card card--claim card--lift reveal">
             <span class="card-num">01</span>
             <p class="claim">Advertising isn't only about sales.</p>
           </div>
-          <div class="card card--claim">
+          <div class="card card--claim card--lift reveal">
             <span class="card-num">02</span>
             <p class="claim">It's about being remembered.</p>
           </div>
-          <div class="card card--claim card--mallard">
+          <div class="card card--claim card--mallard card--lift reveal">
             <span class="card-num">03</span>
             <p class="claim">That's the <span class="accent">long game.</span></p>
           </div>
@@ -74,24 +75,23 @@
     </section>
 
     <section class="section section--mallard" id="duck">
-      <div class="grain grain--dark" aria-hidden="true"></div>
       <div class="wrap wrap--split">
-        <div>
+        <div class="reveal">
           <h2 class="h-2xl">Why the <span class="accent">duck.</span></h2>
           <p class="duck-lede">One studio, one set of hands, on your advertising every month.</p>
         </div>
-        <div class="stack">
-          <div class="card card--birch">
+        <div class="stack stagger">
+          <div class="card card--birch card--lift reveal">
             <p class="eyebrow eyebrow--sm">The thinking</p>
             <p class="card-title">The brand first, then the ads.</p>
             <p class="body-text">Not a look. A proper read on what you sell and who's buying it. The better I know the brand, the better the ads get.</p>
           </div>
-          <div class="card card--birch">
+          <div class="card card--birch card--lift reveal">
             <p class="eyebrow eyebrow--sm">Every ad has a job</p>
             <p class="card-title">Something to say, someone to move.</p>
             <p class="body-text">A good looking ad is not the same as a good ad. We go for both.</p>
           </div>
-          <div class="card card--birch">
+          <div class="card card--birch card--lift reveal">
             <p class="eyebrow eyebrow--sm">Your advertiser</p>
             <p class="card-title">Your advertising is handled.</p>
             <p class="body-text">No re-explaining yourself, no starting from scratch. You brief me, and you go back to running the business.</p>
@@ -101,13 +101,12 @@
     </section>
 
     <section class="section section--paper section--pricing">
-      <div class="grain grain--light" aria-hidden="true"></div>
       <div class="wrap">
-        <h2 class="eyebrow eyebrow--tight">Pricing</h2>
-        <p class="lede lede--pricing">Monthly. Cancel with 30 days notice.</p>
+        <h2 class="eyebrow eyebrow--tight reveal">Pricing</h2>
+        <p class="lede lede--pricing reveal">Monthly. Cancel with 30 days notice.</p>
 
-        <div class="grid--tiers">
-          <div class="card card--tier">
+        <div class="grid--tiers stagger">
+          <div class="card card--tier card--lift reveal">
             <h3 class="h-tier">Starter</h3>
             <p class="tier-price">from $1,500/mo</p>
             <ul class="tier-list">
@@ -116,7 +115,7 @@
               <li>Social, display and EDM.</li>
             </ul>
           </div>
-          <div class="card card--tier card--tier-feature">
+          <div class="card card--tier card--tier-feature card--lift reveal">
             <h3 class="h-tier h-tier--feature">Studio</h3>
             <p class="tier-price tier-price--accent">from $3,000/mo</p>
             <ul class="tier-list tier-list--on-dark">
@@ -126,7 +125,7 @@
               <li>Social, display and EDM.</li>
             </ul>
           </div>
-          <div class="card card--tier">
+          <div class="card card--tier card--lift reveal">
             <h3 class="h-tier">Partner</h3>
             <p class="tier-price">by application</p>
             <ul class="tier-list">
@@ -135,7 +134,7 @@
           </div>
         </div>
 
-        <div class="card card--faq">
+        <div class="card card--faq reveal">
           <h3 class="eyebrow eyebrow--wide">Questions before you ask them</h3>
           <div class="faq-list">
             <details class="faq-item">
@@ -184,13 +183,12 @@
     </section>
 
     <section class="section section--audit" id="audit">
-      <div class="grain grain--dark" aria-hidden="true"></div>
       <div class="wrap">
-        <p class="eyebrow eyebrow--on-dark eyebrow--audit">The free audit</p>
-        <h2 class="h-audit">Send me your brand and I'll tell you what your advertising is doing, what it isn't, and <span class="accent">what I'd change.</span></h2>
-        <p class="lede lede--audit">Written, specific to you, no obligation. Yours either way.</p>
+        <p class="eyebrow eyebrow--on-dark eyebrow--audit reveal">The free audit</p>
+        <h2 class="h-audit reveal">Send me your brand and I'll tell you what your advertising is doing, what it isn't, and <span class="accent">what I'd change.</span></h2>
+        <p class="lede lede--audit reveal">Written, specific to you, no obligation. Yours either way.</p>
 
-        <div class="card card--form">
+        <div class="card card--form reveal">
           <form class="form" name="audit" method="POST" action="/success" data-netlify="true" netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="audit">
             <p class="hp"><label>Don't fill this in: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
@@ -221,15 +219,14 @@
   </main>
 
   <section class="section section--contact">
-    <div class="grain grain--dark" aria-hidden="true"></div>
     <div class="wrap">
-      <p class="eyebrow eyebrow--on-dark eyebrow--contact">Contact</p>
-      <h2 class="h-contact">Talk to the duck</h2>
-      <p class="lede lede--contact">Not ready for an audit? But wanna talk. Email me.</p>
+      <p class="eyebrow eyebrow--on-dark eyebrow--contact reveal">Contact</p>
+      <h2 class="h-contact reveal">Talk to the duck</h2>
+      <p class="lede lede--contact reveal">Not ready for an audit? But wanna talk. Email me.</p>
       <!-- PLACEHOLDER: confirm this address is correct. -->
-      <a class="email-link" href="mailto:hello@madebyduck.com.au">hello@madebyduck.com.au</a>
+      <a class="email-link reveal" href="mailto:hello@madebyduck.com.au">hello@madebyduck.com.au</a>
 
-      <footer class="site-footer">
+      <footer class="site-footer reveal">
         <img class="footer-mark" src="/assets/icon-birch.png" alt="Madebyduck duck mark" width="2084" height="2084">
         <!-- PLACEHOLDER: replace with the real ABN. -->
         <p class="footer-note">ABN to come</p>
@@ -243,6 +240,27 @@
   </section>
 
 </div>
+
+<script>
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!window.IntersectionObserver || !window.matchMedia ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    for (var i = 0; i < els.length; i++) els[i].classList.add('is-in');
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-in');
+      io.unobserve(entry.target);
+    });
+  // No negative bottom margin: content sitting in the last screenful can
+  // never scroll past an inset edge, and would stay hidden forever.
+  }, { rootMargin: '0px', threshold: 0 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
 
 </body>
 </html>

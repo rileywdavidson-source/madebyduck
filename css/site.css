@@ -84,6 +84,9 @@
   --grain-op: 0.3;
   --stamp: 6px;
 
+  /* Lets the FAQ rows transition to and from height:auto. */
+  interpolate-size: allow-keywords;
+
   --radius-card: 14px;
   --radius-btn: 10px;
   --radius-field: 8px;
@@ -134,46 +137,63 @@ img { max-width: 100%; }
   padding: clamp(52px, 8vw, 96px) var(--gutter);
 }
 
+/* Flat ground, lit from behind the headline. The bloom sits under .wrap
+   (which holds z-index 1) so content never picks up its tint. */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse var(--glow-w, 920px) var(--glow-h, 560px)
+      at var(--glow-x, 8%) var(--glow-y, 18%),
+    var(--glow, transparent),
+    transparent 70%
+  );
+}
+
 .section--hero {
   background: var(--mallard);
   color: var(--birch);
   padding: clamp(84px, 15vw, 168px) var(--gutter) clamp(76px, 13vw, 148px);
+  --glow: rgba(255, 109, 45, 0.26);
+  --glow-w: 1100px;
+  --glow-h: 680px;
+  --glow-y: 30%;
 }
-.section--paper { background: var(--birch); }
+.section--paper {
+  background: var(--birch);
+  --glow: rgba(255, 109, 45, 0.13);
+}
 .section--mallard {
   background: var(--mallard);
   color: var(--birch);
   padding: clamp(56px, 9vw, 108px) var(--gutter);
+  --glow: rgba(255, 109, 45, 0.2);
 }
 .section--pricing { padding: clamp(52px, 8.5vw, 100px) var(--gutter); }
 .section--audit {
   background: var(--speculum);
   color: var(--birch);
   padding: clamp(78px, 15vw, 156px) var(--gutter);
+  /* Orange over this blue is complementary and turns muddy, so the audit
+     section is lit with a lighter tint of its own ground instead. */
+  --glow: rgba(126, 170, 240, 0.3);
 }
 .section--contact {
   background: var(--ink);
   color: var(--birch);
   padding: clamp(60px, 10vw, 112px) var(--gutter) clamp(36px, 6vw, 56px);
+  --glow: rgba(255, 109, 45, 0.15);
 }
 
-/* Riso-style halftone overlay. Two recipes: a single dark dot grid on
-   paper, and a paired dark/light grid on coloured grounds. */
-.grain {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: var(--grain-op);
-  mix-blend-mode: multiply;
-  background-size: 5px 5px;
-}
-.grain--light { background-image: radial-gradient(var(--ink) 1px, transparent 1.2px); }
-.grain--dark {
-  background-image:
-    radial-gradient(#000 1px, transparent 1.2px),
-    radial-gradient(rgba(255, 243, 214, 0.55) 1px, transparent 1.2px);
-  background-size: 5px 5px, 5px 5px;
-  background-position: 0 0, 2px 2px;
+/* The hero bloom comes up with the headline sequence rather than being
+   there from the first frame. */
+.section--hero::before { animation: glowIn 1400ms 120ms ease-out both; }
+
+@keyframes glowIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .wrap {
@@ -428,12 +448,29 @@ img { max-width: 100%; }
 
 /* ── Cards ────────────────────────────────────────────────── */
 
+/* Depth and colour of the offset "stamp" are variables so a hover can
+   deepen whatever shadow the card already has. */
 .card {
+  --shadow-d: var(--stamp);
+  --shadow-c: var(--ink);
   background: var(--birch-card);
   border: 2px solid var(--ink);
   border-radius: var(--radius-card);
-  box-shadow: var(--stamp) var(--stamp) 0 var(--ink);
+  box-shadow: var(--shadow-d) var(--shadow-d) 0 var(--shadow-c);
   padding: clamp(22px, 2.8vw, 32px);
+}
+
+/* Cards lift off the page; buttons press into it.
+   This uses the standalone `translate` property, not `transform`, so the
+   lift composes with the scroll reveal's transform instead of one
+   winning the cascade and cancelling the other. */
+.card--lift {
+  transition: translate 200ms cubic-bezier(0.2, 0.7, 0.3, 1),
+    box-shadow 200ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.card--lift:hover {
+  translate: -3px -3px;
+  box-shadow: calc(var(--shadow-d) + 3px) calc(var(--shadow-d) + 3px) 0 var(--shadow-c);
 }
 
 /* Numbered "long game" cards */
@@ -447,7 +484,7 @@ img { max-width: 100%; }
 .card--mallard {
   background: var(--mallard);
   color: var(--birch);
-  box-shadow: var(--stamp) var(--stamp) 0 var(--beak);
+  --shadow-c: var(--beak);
 }
 .card--mallard .card-num { color: var(--on-dark-70); }
 .card--mallard .claim { color: var(--birch); }
@@ -494,12 +531,12 @@ img { max-width: 100%; }
   display: flex;
   flex-direction: column;
   padding: clamp(26px, 3.4vw, 38px);
-  box-shadow: 4px 4px 0 var(--ink);
+  --shadow-d: 4px;
 }
 .card--tier-feature {
   background: var(--mallard);
   color: var(--birch);
-  box-shadow: var(--stamp) var(--stamp) 0 var(--ink);
+  --shadow-d: var(--stamp);
 }
 
 .tier-price {
@@ -528,7 +565,8 @@ img { max-width: 100%; }
 .card--faq {
   margin-top: clamp(36px, 6vw, 60px);
   padding: clamp(26px, 4.6vw, 48px);
-  box-shadow: 4px 4px 0 var(--mallard);
+  --shadow-d: 4px;
+  --shadow-c: var(--mallard);
 }
 
 .faq-list {
@@ -692,6 +730,43 @@ img { max-width: 100%; }
 .footer-link:hover { color: var(--birch); }
 
 /* ── Motion ───────────────────────────────────────────────── */
+
+/* Scroll reveals.
+   Two guards, both deliberate. The .js gate means the resting state is
+   "visible", so a failed or blocked script leaves a fully readable page
+   rather than a blank one. The no-preference gate means a reader who has
+   asked for less motion never gets the hidden state applied at all. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 640ms cubic-bezier(0.2, 0.7, 0.3, 1),
+      transform 640ms cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+  .js .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Siblings enter in sequence rather than as a block. */
+  .js .stagger > .reveal:nth-child(2) { transition-delay: 90ms; }
+  .js .stagger > .reveal:nth-child(3) { transition-delay: 180ms; }
+  .js .stagger > .reveal:nth-child(4) { transition-delay: 270ms; }
+
+  /* FAQ rows open to their measured height. Browsers without
+     ::details-content simply snap open, as before. */
+  .faq-item::details-content {
+    block-size: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: block-size 300ms ease, opacity 240ms ease,
+      content-visibility 300ms allow-discrete;
+  }
+  .faq-item[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *,
