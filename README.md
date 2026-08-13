@@ -19,9 +19,11 @@ The page is built out of the units it sells. Social, display and EDM are not a l
 words, they are the shape of the layout. Every block is an ad unit: chunky border, hard
 offset shadow, a slug naming the format and its real size.
 
-One motion idea, in one place. The hero is a display banner. It plays three frames,
-lands on the end frame with the CTA, and stops. Under `prefers-reduced-motion` it shows
-all four frames stacked, which is what a banner's frames are anyway.
+One motion idea, in one place. The hero is a display banner. Five frames, hard cuts, a
+different palette colour on each, then it holds on the last card and stops. The last card
+is the whole banner on one: the three beats, the wordmark, the CTA. Seven seconds, one
+pass. Under `prefers-reduced-motion` the page simply opens on that last card, so nothing
+is lost. Timing lives in one custom property, `--banner-run`.
 
 ## Fonts
 
@@ -32,7 +34,7 @@ self-hosted so there are no third-party requests at all. Figtree is preloaded.
 
 | What | Where |
 | --- | --- |
-| Logo files | `index.html`, the `LOGO PLACEHOLDER` comment in `<header>`. A text wordmark stands in. |
+| Logo files | `index.html`, the `LOGO PLACEHOLDER` comment in `<header>`. A text wordmark stands in, and the banner's last card signs off in EB Garamond italic. |
 | `favicon.svg` | Repo root. Brand mark, not the logo. |
 | `og.png` | Does not exist yet. Needs a 1200x630 PNG at the site root. |
 | Domain | `madebyduck.com.au` is assumed in the Open Graph tags. |

@@ -52,13 +52,22 @@
       <span class="banner__tick banner__tick--bl" aria-hidden="true"></span>
       <span class="banner__tick banner__tick--br" aria-hidden="true"></span>
 
+      <!-- Frames 1 to 4 are the animation. Frame 5 states all of it, so they are
+           hidden from assistive tech and dropped entirely under reduced motion. -->
       <div class="frames">
-        <p class="frame frame--1 beat">Get noticed.</p>
-        <p class="frame frame--2 beat">Get remembered.</p>
-        <p class="frame frame--3 beat">Get known.</p>
-        <div class="frame frame--4 endframe">
-          <h1 class="endframe__title">Madebyduck.<br>Your advertiser.</h1>
-          <a class="btn" href="#audit">Get my audit</a>
+        <div class="frame frame--1" aria-hidden="true"><p class="frame__in beat">Get noticed.</p></div>
+        <div class="frame frame--2" aria-hidden="true"><p class="frame__in beat">Get remembered.</p></div>
+        <div class="frame frame--3" aria-hidden="true"><p class="frame__in beat">Get known.</p></div>
+        <div class="frame frame--4" aria-hidden="true"><p class="frame__in beat">Madebyduck.</p></div>
+
+        <div class="frame frame--5">
+          <div class="frame__in endframe">
+            <p class="beat beat--sm">Get noticed.</p>
+            <p class="beat beat--sm">Get remembered.</p>
+            <p class="beat beat--sm">Get known.</p>
+            <h1 class="endframe__mark">Madebyduck.</h1>
+            <a class="btn" href="#audit">Get my audit <svg class="btn__arrow" viewBox="0 0 18 12" aria-hidden="true" focusable="false"><path d="M0 6h15M10.5 1.5 15 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg></a>
+          </div>
         </div>
       </div>
     </div>
@@ -238,7 +247,7 @@
             <textarea class="field__input field__input--area" id="f-running" name="what-youre-running-now" rows="4"></textarea>
           </div>
 
-          <button class="btn btn--full" type="submit">Get my audit</button>
+          <button class="btn btn--full" type="submit">Get my audit <svg class="btn__arrow" viewBox="0 0 18 12" aria-hidden="true" focusable="false"><path d="M0 6h15M10.5 1.5 15 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg></button>
         </form>
 
       </div>

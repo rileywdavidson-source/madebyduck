@@ -54,7 +54,9 @@
   --edge:   3px;
 
   --focus: var(--chestnut);
-  --btn-shadow: var(--chestnut);
+
+  /* One pass of the banner. Five frames, hard cuts, then it holds. */
+  --banner-run: 7s;
 
   color-scheme: light;
 }
@@ -157,22 +159,25 @@ a { color: inherit; }
 }
 
 .section--birch   { background: var(--birch);    color: var(--chestnut); }
-.section--chestnut{ background: var(--chestnut); color: var(--birch); --focus: var(--birch); --btn-shadow: var(--birch); }
-.section--green   { background: var(--mallard);  color: var(--birch); --focus: var(--birch); --btn-shadow: var(--birch); }
-.section--blue    { background: var(--speculum); color: var(--birch); --focus: var(--birch); --btn-shadow: var(--birch); }
+.section--chestnut{ background: var(--chestnut); color: var(--birch); --focus: var(--birch); }
+.section--green   { background: var(--mallard);  color: var(--birch); --focus: var(--birch); }
+.section--blue    { background: var(--speculum); color: var(--birch); --focus: var(--birch); }
 
 
-/* ---------- Buttons ---------- */
+/* ---------- Buttons ----------
+   Orange ground, chestnut text, birch outline, chestnut offset shadow.
+   Square corners. Same everywhere the button appears. */
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.7em;
   background: var(--orange);
   color: var(--chestnut);
-  border: var(--edge) solid var(--chestnut);
-  box-shadow: var(--off) var(--off) 0 var(--btn-shadow);
+  border: var(--edge) solid var(--birch);
+  border-radius: 0;
+  box-shadow: var(--off) var(--off) 0 var(--chestnut);
   padding: 1.0625rem 1.625rem;
   font-size: var(--fs-label);
   font-weight: 800;
@@ -183,10 +188,19 @@ a { color: inherit; }
   font-family: inherit;
   transition: transform 120ms ease, box-shadow 120ms ease;
 }
-.btn:hover { transform: translate(3px, 3px); box-shadow: calc(var(--off) - 3px) calc(var(--off) - 3px) 0 var(--btn-shadow); }
-.btn:active { transform: translate(var(--off), var(--off)); box-shadow: 0 0 0 var(--btn-shadow); }
+.btn:hover { transform: translate(3px, 3px); box-shadow: calc(var(--off) - 3px) calc(var(--off) - 3px) 0 var(--chestnut); }
+.btn:active { transform: translate(var(--off), var(--off)); box-shadow: 0 0 0 var(--chestnut); }
 .btn:disabled { opacity: 0.6; cursor: progress; }
 .btn--full { width: 100%; }
+
+/* The arrow is drawn, not typed. U+2192 is not in the Figtree latin subset,
+   so a text arrow would silently fall back to a system font. */
+.btn__arrow {
+  width: 1.15em;
+  height: 0.78em;
+  flex: none;
+  overflow: visible;
+}
 
 
 /* ---------- Format ratio marks ----------
@@ -256,7 +270,6 @@ a { color: inherit; }
   background: var(--mallard);
   color: var(--birch);
   --focus: var(--birch);
-  --btn-shadow: var(--birch);
   padding-inline: max(var(--gut), (100% - var(--maxw)) / 2);
   padding-block: clamp(1.5rem, 4vw, 3rem) clamp(3.5rem, 9vw, 6.5rem);
 }
@@ -265,7 +278,6 @@ a { color: inherit; }
   position: relative;
   border: var(--edge) solid var(--birch);
   box-shadow: var(--off-lg) var(--off-lg) 0 var(--chestnut);
-  padding: clamp(1.5rem, 5vw, 3.5rem);
 }
 
 /* Registration marks, the way a banner artwork gets delivered. */
@@ -282,62 +294,96 @@ a { color: inherit; }
 
 .frames {
   display: grid;
-  align-content: center;
   min-height: min(48vh, 26rem);
 }
+
+/* Every frame fills the card and paints its own ground, so the colour
+   changes with the cut. No crossfade, so two grounds never blend. */
 .frame {
   grid-area: 1 / 1;
-  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  visibility: hidden;
 }
 
-.beat,
-.endframe__title {
+.frame--1 { background: var(--speculum); color: var(--birch); }
+.frame--2 { background: var(--chestnut); color: var(--birch); }
+.frame--3 { background: var(--mallard);  color: var(--birch); }
+.frame--4 { background: var(--birch);    color: var(--chestnut); }
+.frame--5 { background: var(--mallard);  color: var(--birch); visibility: visible; }
+
+.beat {
   font-size: var(--fs-d1);
   font-weight: 800;
   line-height: 0.9;
   letter-spacing: -0.035em;
-  color: var(--birch);
+  color: inherit;
 }
-.beat { pointer-events: none; }
+.beat--sm { font-size: var(--fs-d2); line-height: 0.98; letter-spacing: -0.032em; }
 
-.endframe__title { margin-bottom: clamp(1.75rem, 4.5vw, 2.75rem); }
+.endframe {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* The sign-off. EB Garamond italic, one word. */
+.endframe__mark {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.375rem, 4vw, 1.875rem);
+  line-height: 1;
+  letter-spacing: 0;
+  margin-top: clamp(1.125rem, 3vw, 1.75rem);
+}
+
+.endframe .btn { margin-top: clamp(1.5rem, 4vw, 2.25rem); }
 
 
-/* The banner plays once over four seconds and holds on the end frame. */
+/* Five frames, hard cuts, one pass, then it holds on the last card.
+   Each frame owns 20% of the run. */
 @media (prefers-reduced-motion: no-preference) {
-  .frame { animation: 4s linear both; }
-  .frame--1 { animation-name: fr1; }
-  .frame--2 { animation-name: fr2; }
-  .frame--3 { animation-name: fr3; }
-  .frame--4 { animation-name: fr4; }
+  /* steps(1, end) so each keyframe value is held, then snaps. Without it,
+     visibility resolves to `visible` for any progress between the two
+     keyframes and every later frame switches on at once. */
+  .frame { animation: var(--banner-run) steps(1, end) both; }
+  .frame--1 { animation-name: cut1; }
+  .frame--2 { animation-name: cut2; }
+  .frame--3 { animation-name: cut3; }
+  .frame--4 { animation-name: cut4; }
+  .frame--5 { animation-name: cut5; }
+
+  /* Only the type moves. The ground is always a clean cut. */
+  .frame__in { animation: var(--banner-run) ease-out both; }
+  .frame--1 .frame__in { animation-name: rise1; }
+  .frame--2 .frame__in { animation-name: rise2; }
+  .frame--3 .frame__in { animation-name: rise3; }
+  .frame--4 .frame__in { animation-name: rise4; }
+  .frame--5 .frame__in { animation-name: rise5; }
+
+  .banner__tick { animation: var(--banner-run) steps(1, end) both tickswap; }
 }
 
-@keyframes fr1 {
-  0%   { opacity: 0; transform: translateY(0.14em); }
-  4%   { opacity: 1; transform: translateY(0); }
-  21%  { opacity: 1; transform: translateY(0); }
-  25%  { opacity: 0; transform: translateY(-0.1em); }
-  100% { opacity: 0; transform: translateY(-0.1em); }
-}
-@keyframes fr2 {
-  0%, 25% { opacity: 0; transform: translateY(0.14em); }
-  29%  { opacity: 1; transform: translateY(0); }
-  46%  { opacity: 1; transform: translateY(0); }
-  50%  { opacity: 0; transform: translateY(-0.1em); }
-  100% { opacity: 0; transform: translateY(-0.1em); }
-}
-@keyframes fr3 {
-  0%, 50% { opacity: 0; transform: translateY(0.14em); }
-  54%  { opacity: 1; transform: translateY(0); }
-  71%  { opacity: 1; transform: translateY(0); }
-  75%  { opacity: 0; transform: translateY(-0.1em); }
-  100% { opacity: 0; transform: translateY(-0.1em); }
-}
-@keyframes fr4 {
-  0%, 75%  { opacity: 0; visibility: hidden; transform: translateY(0.14em); }
-  75.01%   { visibility: visible; }
-  84%      { opacity: 1; transform: translateY(0); }
-  100%     { opacity: 1; visibility: visible; transform: translateY(0); }
+@keyframes cut1 { 0% { visibility: visible; } 20% { visibility: hidden; } }
+@keyframes cut2 { 0% { visibility: hidden; } 20% { visibility: visible; } 40% { visibility: hidden; } }
+@keyframes cut3 { 0% { visibility: hidden; } 40% { visibility: visible; } 60% { visibility: hidden; } }
+@keyframes cut4 { 0% { visibility: hidden; } 60% { visibility: visible; } 80% { visibility: hidden; } }
+@keyframes cut5 { 0% { visibility: hidden; } 80% { visibility: visible; } }
+
+@keyframes rise1 { 0% { opacity: 0; transform: translateY(0.12em); } 4%, 100% { opacity: 1; transform: translateY(0); } }
+@keyframes rise2 { 0%, 20% { opacity: 0; transform: translateY(0.12em); } 24%, 100% { opacity: 1; transform: translateY(0); } }
+@keyframes rise3 { 0%, 40% { opacity: 0; transform: translateY(0.12em); } 44%, 100% { opacity: 1; transform: translateY(0); } }
+@keyframes rise4 { 0%, 60% { opacity: 0; transform: translateY(0.12em); } 64%, 100% { opacity: 1; transform: translateY(0); } }
+@keyframes rise5 { 0%, 80% { opacity: 0; transform: translateY(0.12em); } 85%, 100% { opacity: 1; transform: translateY(0); } }
+
+/* The marks sit on top of the frames, so they swap on the Birch card. */
+@keyframes tickswap {
+  0%  { border-color: var(--orange); }
+  60% { border-color: var(--chestnut); }
+  80% { border-color: var(--orange); }
 }
 
 
@@ -533,7 +579,6 @@ a { color: inherit; }
   background: var(--birch);
   color: var(--chestnut);
   --focus: var(--chestnut);
-  --btn-shadow: var(--chestnut);
   border: var(--edge) solid var(--chestnut);
   box-shadow: var(--off) var(--off) 0 var(--chestnut);
   padding: clamp(1.25rem, 4vw, 2.25rem);
@@ -636,8 +681,8 @@ a { color: inherit; }
 
 
 /* =========================================================================
-   Reduced motion. The banner shows every frame at once, stacked.
-   That is what a banner's frames are: four states of the same message.
+   Reduced motion. Frame five is the whole banner on one card, so the site
+   simply opens on it. Nothing is lost: the other four say the same thing.
    ========================================================================= */
 
 @media (prefers-reduced-motion: reduce) {
@@ -648,19 +693,9 @@ a { color: inherit; }
     transition: none !important;
   }
 
-  .frames {
-    display: block;
-    min-height: 0;
-  }
-  .frame {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-  }
-  .beat {
-    font-size: var(--fs-d2);
-    margin-bottom: 0.15em;
-  }
-  .endframe { margin-top: clamp(2rem, 6vw, 3.5rem); }
-  .btn:hover, .btn:active { transform: none; box-shadow: var(--off) var(--off) 0 var(--btn-shadow); }
+  .frame--1, .frame--2, .frame--3, .frame--4 { display: none; }
+  .frame--5 { visibility: visible; }
+  .frame__in { opacity: 1; transform: none; }
+
+  .btn:hover, .btn:active { transform: none; box-shadow: var(--off) var(--off) 0 var(--chestnut); }
 }
