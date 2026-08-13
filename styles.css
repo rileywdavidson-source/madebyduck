@@ -55,7 +55,7 @@
 
   --focus: var(--chestnut);
 
-  /* One pass of the banner. Five frames, hard cuts, then it holds. */
+  /* One pass of the banner. Five frames, then it holds. */
   --banner-run: 7s;
 
   color-scheme: light;
@@ -278,6 +278,7 @@ a { color: inherit; }
   position: relative;
   border: var(--edge) solid var(--birch);
   box-shadow: var(--off-lg) var(--off-lg) 0 var(--chestnut);
+  padding: clamp(1.5rem, 5vw, 3.5rem);
 }
 
 /* Registration marks, the way a banner artwork gets delivered. */
@@ -294,34 +295,36 @@ a { color: inherit; }
 
 .frames {
   display: grid;
+  align-content: center;
   min-height: min(48vh, 26rem);
 }
-
-/* Every frame fills the card and paints its own ground, so the colour
-   changes with the cut. No crossfade, so two grounds never blend. */
 .frame {
   grid-area: 1 / 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(1.5rem, 5vw, 3.5rem);
-  visibility: hidden;
+  align-self: center;
 }
 
-.frame--1 { background: var(--speculum); color: var(--birch); }
-.frame--2 { background: var(--chestnut); color: var(--birch); }
-.frame--3 { background: var(--mallard);  color: var(--birch); }
-.frame--4 { background: var(--birch);    color: var(--chestnut); }
-.frame--5 { background: var(--mallard);  color: var(--birch); visibility: visible; }
+/* One ground the whole way. The type changes colour, and the build lands
+   on Beak Orange. Only Birch and Orange are legible on Mallard Green:
+   Speculum Blue reads 1.08:1 here and Chestnut 1.67:1. */
+.frame--1 { color: var(--birch); }
+.frame--2 { color: var(--birch); }
+.frame--3 { color: var(--orange); }
+.frame--4 { color: var(--birch); }
+.frame--5 { color: var(--birch); }
+
+/* Frames 1 to 4 sit over the resting card's CTA. */
+.frame--1, .frame--2, .frame--3, .frame--4 { pointer-events: none; }
 
 .beat {
   font-size: var(--fs-d1);
   font-weight: 800;
   line-height: 0.9;
   letter-spacing: -0.035em;
-  color: inherit;
 }
 .beat--sm { font-size: var(--fs-d2); line-height: 0.98; letter-spacing: -0.032em; }
+
+/* The resting card keeps the build's colours, so the orange stays on the page. */
+.beat--land { color: var(--orange); }
 
 .endframe {
   display: flex;
@@ -343,48 +346,58 @@ a { color: inherit; }
 .endframe .btn { margin-top: clamp(1.5rem, 4vw, 2.25rem); }
 
 
-/* Five frames, hard cuts, one pass, then it holds on the last card.
-   Each frame owns 20% of the run. */
+/* Five frames over one pass, each owning 20% of the run, then it holds on
+   the resting card. The frames cross over each other. */
 @media (prefers-reduced-motion: no-preference) {
-  /* steps(1, end) so each keyframe value is held, then snaps. Without it,
-     visibility resolves to `visible` for any progress between the two
-     keyframes and every later frame switches on at once. */
-  .frame { animation: var(--banner-run) steps(1, end) both; }
-  .frame--1 { animation-name: cut1; }
-  .frame--2 { animation-name: cut2; }
-  .frame--3 { animation-name: cut3; }
-  .frame--4 { animation-name: cut4; }
-  .frame--5 { animation-name: cut5; }
+  .frame { animation: var(--banner-run) ease-out both; }
+  .frame--1 { animation-name: fr1; }
+  .frame--2 { animation-name: fr2; }
+  .frame--3 { animation-name: fr3; }
+  .frame--4 { animation-name: fr4; }
 
-  /* Only the type moves. The ground is always a clean cut. */
-  .frame__in { animation: var(--banner-run) ease-out both; }
-  .frame--1 .frame__in { animation-name: rise1; }
-  .frame--2 .frame__in { animation-name: rise2; }
-  .frame--3 .frame__in { animation-name: rise3; }
-  .frame--4 .frame__in { animation-name: rise4; }
-  .frame--5 .frame__in { animation-name: rise5; }
-
-  .banner__tick { animation: var(--banner-run) steps(1, end) both tickswap; }
+  /* Two tracks: the fade, plus visibility on its own discrete one so the
+     resting card's CTA is not focusable before it arrives. Visibility
+     resolves to `visible` for any progress between two keyframes, so it
+     needs steps(1, end) rather than the shared easing. */
+  .frame--5 {
+    animation-name: fr5, vis5;
+    animation-timing-function: ease-out, steps(1, end);
+  }
 }
 
-@keyframes cut1 { 0% { visibility: visible; } 20% { visibility: hidden; } }
-@keyframes cut2 { 0% { visibility: hidden; } 20% { visibility: visible; } 40% { visibility: hidden; } }
-@keyframes cut3 { 0% { visibility: hidden; } 40% { visibility: visible; } 60% { visibility: hidden; } }
-@keyframes cut4 { 0% { visibility: hidden; } 60% { visibility: visible; } 80% { visibility: hidden; } }
-@keyframes cut5 { 0% { visibility: hidden; } 80% { visibility: visible; } }
-
-@keyframes rise1 { 0% { opacity: 0; transform: translateY(0.12em); } 4%, 100% { opacity: 1; transform: translateY(0); } }
-@keyframes rise2 { 0%, 20% { opacity: 0; transform: translateY(0.12em); } 24%, 100% { opacity: 1; transform: translateY(0); } }
-@keyframes rise3 { 0%, 40% { opacity: 0; transform: translateY(0.12em); } 44%, 100% { opacity: 1; transform: translateY(0); } }
-@keyframes rise4 { 0%, 60% { opacity: 0; transform: translateY(0.12em); } 64%, 100% { opacity: 1; transform: translateY(0); } }
-@keyframes rise5 { 0%, 80% { opacity: 0; transform: translateY(0.12em); } 85%, 100% { opacity: 1; transform: translateY(0); } }
-
-/* The marks sit on top of the frames, so they swap on the Birch card. */
-@keyframes tickswap {
-  0%  { border-color: var(--orange); }
-  60% { border-color: var(--chestnut); }
-  80% { border-color: var(--orange); }
+@keyframes fr1 {
+  0%   { opacity: 0; transform: translateY(0.12em); }
+  3%   { opacity: 1; transform: translateY(0); }
+  17%  { opacity: 1; transform: translateY(0); }
+  20%  { opacity: 0; transform: translateY(-0.08em); }
+  100% { opacity: 0; transform: translateY(-0.08em); }
 }
+@keyframes fr2 {
+  0%, 20% { opacity: 0; transform: translateY(0.12em); }
+  23%  { opacity: 1; transform: translateY(0); }
+  37%  { opacity: 1; transform: translateY(0); }
+  40%  { opacity: 0; transform: translateY(-0.08em); }
+  100% { opacity: 0; transform: translateY(-0.08em); }
+}
+@keyframes fr3 {
+  0%, 40% { opacity: 0; transform: translateY(0.12em); }
+  43%  { opacity: 1; transform: translateY(0); }
+  57%  { opacity: 1; transform: translateY(0); }
+  60%  { opacity: 0; transform: translateY(-0.08em); }
+  100% { opacity: 0; transform: translateY(-0.08em); }
+}
+@keyframes fr4 {
+  0%, 60% { opacity: 0; transform: translateY(0.12em); }
+  63%  { opacity: 1; transform: translateY(0); }
+  77%  { opacity: 1; transform: translateY(0); }
+  80%  { opacity: 0; transform: translateY(-0.08em); }
+  100% { opacity: 0; transform: translateY(-0.08em); }
+}
+@keyframes fr5 {
+  0%, 80%   { opacity: 0; transform: translateY(0.12em); }
+  85%, 100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes vis5 { 0% { visibility: hidden; } 80% { visibility: visible; } }
 
 
 /* =========================================================================
@@ -694,8 +707,7 @@ a { color: inherit; }
   }
 
   .frame--1, .frame--2, .frame--3, .frame--4 { display: none; }
-  .frame--5 { visibility: visible; }
-  .frame__in { opacity: 1; transform: none; }
+  .frame--5 { opacity: 1; visibility: visible; transform: none; }
 
   .btn:hover, .btn:active { transform: none; box-shadow: var(--off) var(--off) 0 var(--chestnut); }
 }

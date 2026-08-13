@@ -19,11 +19,17 @@ The page is built out of the units it sells. Social, display and EDM are not a l
 words, they are the shape of the layout. Every block is an ad unit: chunky border, hard
 offset shadow, a slug naming the format and its real size.
 
-One motion idea, in one place. The hero is a display banner. Five frames, hard cuts, a
-different palette colour on each, then it holds on the last card and stops. The last card
-is the whole banner on one: the three beats, the wordmark, the CTA. Seven seconds, one
-pass. Under `prefers-reduced-motion` the page simply opens on that last card, so nothing
-is lost. Timing lives in one custom property, `--banner-run`.
+One motion idea, in one place. The hero is a display banner on one Mallard Green ground.
+Five frames cross over each other and the type changes colour, building in Birch and
+landing on Beak Orange for "Get known." Then it holds on the last card and stops. That
+card is the whole banner on one: the three beats, the wordmark, the CTA, with the orange
+kept on "Get known." Seven seconds, one pass. Under `prefers-reduced-motion` the page
+simply opens on that last card, so nothing is lost. Timing is one custom property,
+`--banner-run`.
+
+Only Birch and Beak Orange are legible as type on Mallard Green (7.96:1 and 3.12:1).
+Speculum Blue reads 1.08:1 there and Chestnut 1.67:1, so neither is usable for text on
+that ground.
 
 ## Fonts
 
