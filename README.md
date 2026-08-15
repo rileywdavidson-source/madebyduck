@@ -6,7 +6,7 @@ no dependencies. Netlify serves the repo root as-is.
 ```
 index.html                  home: the banner, then the philosophy
 why-the-duck/index.html     the three beliefs, set in the three formats
-pricing/index.html          the three retainers, then all five questions
+pricing/index.html          the three retainers, then the questions
 contact/index.html          get in touch: the form, then the audit line
 styles.css                  the whole design system, shared by all four
 favicon.svg                 PLACEHOLDER, stands in until the logo files land
@@ -73,7 +73,8 @@ self-hosted so there are no third-party requests at all. Figtree is preloaded.
 
 ## Labels not in the supplied copy
 
-Eyebrows: *Philosophy*, *The duck*. The supplied section labels were too long for an
+Eyebrows: *Philosophy*, *The duck*, *The audit*. Plus the *Find out more* label on
+the home page. The supplied section labels were too long for an
 eyebrow, which is one or two words. *Pricing* and *Contact* are yours. The contact
 form's button says **Send**, since the supplied "Get my audit" no longer matches a
 general enquiry form. Page titles and meta descriptions are mine too.
