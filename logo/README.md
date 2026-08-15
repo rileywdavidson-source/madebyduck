@@ -1,52 +1,71 @@
-# Logo files
+# Logo
 
-Drop the exported files in this folder using the names below. The site is already
-sized and positioned for them; swapping the text wordmark for the real logo is one
-edit per page (four pages), marked `LOGO PLACEHOLDER` in each HTML file.
+The supplied artwork, plus one recolour. All SVG, all flat, all in the brand
+colours. No PNG or JPG version is kept here: SVG is what the site loads and it
+stays sharp at every size.
 
-## Format
+```
+madebyduck-lockup-green-duck-orange-wordmark.svg   duck + wordmark, as supplied
+madebyduck-lockup-orange-duck-green-wordmark.svg   duck + wordmark, as supplied
+madebyduck-wordmark-green.svg                      wordmark only, as supplied
+madebyduck-wordmark-orange.svg                     wordmark only, as supplied
+madebyduck-wordmark-birch.svg                      wordmark only, RECOLOUR (see below)
+```
 
-**SVG.** It is a logo: vector, sharp at every size, and a few KB. Export from the
-vector source with text converted to outlines so it never depends on a font being
-present. The speckled texture will come out as vector shapes, which is fine.
+All five share `viewBox="0 0 500 262.48"`. The two lockups are one drawing with
+the two fills assigned the opposite way round. The three wordmarks are a second,
+different drawing: the wordmark is not simply the lockup with the duck deleted,
+it repositions, so the two sets are not interchangeable.
 
-The one thing to watch is file size. That texture can explode the path count. If any
-export lands over about 60KB, use a transparent PNG at 3x instead
-(`madebyduck-wordmark-birch@3x.png`, roughly 500px wide) and tell me, and I will
-switch that one reference to an `<img srcset>`.
+## The Birch recolour
 
-No JPG anywhere. It cannot do transparency and it will smear the edges.
+Only Birch and Beak Orange are legible on Mallard Green. The masthead is Mallard
+Green, and orange is reserved for CTAs, so the supplied green and orange
+wordmarks could not be used there. `madebyduck-wordmark-birch.svg` is the
+supplied green wordmark with `#1b5533` replaced by `#fff3d6`. Nothing else
+changed: same paths, same viewBox, same texture. To regenerate it:
 
-## Files, and where each is used
+```sh
+sed 's/#1b5533/#fff3d6/' madebyduck-wordmark-green.svg > madebyduck-wordmark-birch.svg
+```
 
-| File | What it is | Used on |
-| --- | --- | --- |
-| `madebyduck-wordmark-birch.svg` | wordmark only, single colour `#FFF3D6` | the masthead, every page |
-| `madebyduck-wordmark-orange.svg` | wordmark only, orange | supplied; fallback for dark grounds |
-| `madebyduck-wordmark-green.svg` | wordmark only, green | any Birch ground |
-| `madebyduck-lockup-green-orange.svg` | duck green, wordmark orange | Birch grounds, larger sizes |
-| `madebyduck-lockup-orange-green.svg` | duck orange, wordmark green | Birch grounds, larger sizes |
-| `duck-mark.svg` | the duck on its own, square artboard | favicon, app icon |
+## Where each one is used
 
-## Two files that were not supplied and are needed
+| File | Where |
+| --- | --- |
+| `madebyduck-wordmark-birch.svg` | Masthead on all four pages, and the banner's resting card |
+| `madebyduck-lockup-green-duck-orange-wordmark.svg` | `/og.png`, the social share card |
+| the other three | Not used on the site. Kept for decks, invoices, anything on a light ground |
 
-1. **A Birch wordmark** (`#FFF3D6`, single colour). The masthead is Mallard Green, so
-   the green wordmark disappears on it. The orange one works, but orange is doing CTA
-   duty everywhere else on the site, so the mark would read as another button. A cream
-   mono version is the one this site really wants.
+Neither supplied lockup works on the site's two dark grounds. On Mallard Green
+the green half disappears; on Chestnut both halves go muddy. Making a lockup for
+those grounds means recolouring one half of a two-colour mark, which is a design
+decision, not a technical one. That is why the site signs off with the wordmark
+and the full lockup lives on the Birch share card. Say the word if you want a
+Birch or orange-on-green lockup and it takes one line, same as above.
 
-2. **A standalone duck mark** on a square artboard, for the favicon and app icon. Not
-   a crop of the lockup, an export of the duck on its own. At 16px a wide lockup is
-   an unreadable smudge, and the favicon is currently a placeholder.
+## Clear space
 
-If you would rather not make a Birch version, say so and I will use
-`madebyduck-wordmark-orange.svg` on both grounds.
+Every file carries its own clear space. The artwork is 57% of the file's height
+and starts 11.5% in from the left edge. Two consequences:
 
-## Where the logo does not go
+1. A `height` in the CSS is the height of the **file**. The wordmark itself
+   renders at about 57% of it. `--wm-h` in `styles.css` is set accordingly.
+2. Flush-left placements pull the file back by `calc(var(--wm-h) * -0.2195)` so
+   the artwork lines up with the type below it. The file is not trimmed and the
+   artwork is not cropped. Do not "fix" this by editing the SVG.
 
-Not as a background pattern, not scaled up as decoration, not as a bullet, not
-cropped. It appears once per page, in the masthead. The footer is deliberately small,
-just an email address and the legal line, so a mark there would bulk it up. The
-banner's end frame
-signs off in EB Garamond italic, by your call, though the logo lockup is the more
-conventional choice there. Say the word and I will swap it.
+## Still outstanding
+
+**A standalone duck mark, square.** `favicon.svg` at the repo root is a
+placeholder: a flat brand tile, not the logo. A favicon needs a square mark that
+reads at 16px, and neither supplied file is square or legible that small. The
+duck could be lifted out of the lockup, but that would be cropping the logo, so
+it has deliberately not been done. Export the duck on its own, roughly square,
+save it as `favicon.svg`, and it drops straight in with no code change.
+
+## Regenerating og.png
+
+`/og.png` is 1200x630: the green-duck lockup at 880px wide, centred on Birch,
+with a 10px Beak Orange rule top and bottom. Rebuild it from any HTML-to-image
+tool with that recipe, or re-export from the design file at the same size.

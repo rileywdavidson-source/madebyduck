@@ -9,7 +9,9 @@ why-the-duck/index.html     the three beliefs, set in the three formats
 pricing/index.html          the three retainers, then the questions
 contact/index.html          get in touch: the form, then the audit line
 styles.css                  the whole design system, shared by all four
-favicon.svg                 PLACEHOLDER, stands in until the logo files land
+logo/                       the supplied artwork, plus the Birch recolour
+og.png                      1200x630 share card, the lockup on Birch
+favicon.svg                 PLACEHOLDER, still needs a square duck mark
 fonts/                      self-hosted woff2, latin subset only
 netlify.toml                publish = "." plus cache headers for the fonts
 ```
@@ -40,8 +42,9 @@ offset shadow, a slug naming the format and its real size.
 One motion idea, in one place. The hero is a display banner on one Mallard Green ground.
 Five frames cross over each other and the type changes colour, building in Birch and
 landing on Beak Orange for "Get known." Then it holds on the last card and stops. That
-card is the whole banner on one: the three beats, the wordmark, the CTA, with the orange
-kept on "Get known." Seven seconds, one pass. Under `prefers-reduced-motion` the page
+card is the whole banner on one: the three beats, the logo, the CTA, with the orange
+kept on "Get known." The build spells the name out in the display face, then the card
+resolves into the actual mark. Seven seconds, one pass. Under `prefers-reduced-motion` the page
 simply opens on that last card, so nothing is lost. Timing is one custom property,
 `--banner-run`.
 
@@ -63,9 +66,7 @@ self-hosted so there are no third-party requests at all. Figtree is preloaded.
 
 | What | Where |
 | --- | --- |
-| Logo files | See `logo/README.md`. A text wordmark stands in on all four pages; the banner's last card signs off in EB Garamond italic. |
-| `favicon.svg` | Repo root. Brand mark, not the logo. |
-| `og.png` | Does not exist yet. Needs a 1200x630 PNG at the site root. |
+| `favicon.svg` | Repo root. A flat brand tile standing in for a square duck mark, which is the one asset still missing. See `logo/README.md`. |
 | Domain | `madebyduck.com.au` is assumed in the Open Graph tags and canonicals. The email is `@madebyduck.com`, so this may want to be `.com` too. |
 | ABN | `index.html`, `.legal` in the footer. |
 | Privacy policy URL | `index.html`, currently `#privacy-placeholder`. |
@@ -97,8 +98,7 @@ of `styles.css`. Buttons are one `.btn` rule, and every CTA on the site uses it
 unchanged: orange fill, chestnut text, and the outline and the offset shadow both
 chestnut so the two read as one form.
 
-The logo is not in the repo yet. `logo/README.md` says which files to export, in what
-format, and where each one goes. Each page carries a `LOGO PLACEHOLDER` comment with
-the exact line to paste once the files land. Section grounds are four modifier classes
+The logo is in `logo/`, with its own README covering which file goes where, the Birch
+recolour and the clear space the files carry. Section grounds are four modifier classes
 (`--birch`, `--chestnut`, `--green`, `--blue`) that also carry the correct focus ring
 colour for that ground.
