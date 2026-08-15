@@ -1,24 +1,114 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Creative Duck — a boutique advertising studio. Better briefs. Better ads. Simpler than you think." />
-    <title>Creative Duck — Boutique Advertising Studio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <!-- Hidden static form so Netlify detects it at build time -->
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <textarea name="message"></textarea>
-    </form>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<title>Madebyduck. Your advertiser.</title>
+
+<!-- LABEL I WROTE: meta description. -->
+<meta name="description" content="Madebyduck. Your advertiser. One studio, one set of hands, on your advertising every month.">
+<link rel="canonical" href="https://madebyduck.com.au/">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<meta name="theme-color" content="#1B5533">
+
+<!-- PLACEHOLDER: og:url and og:image assume the live domain is madebyduck.com.au.
+     /og.png is the supplied lockup on Birch. Regenerate it from logo/README.md. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Madebyduck">
+<meta property="og:url" content="https://madebyduck.com.au/">
+<meta property="og:title" content="Madebyduck. Your advertiser.">
+<meta property="og:description" content="Madebyduck. Your advertiser. One studio, one set of hands, on your advertising every month.">
+<meta property="og:image" content="https://madebyduck.com.au/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Madebyduck. Your advertiser.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="/fonts/figtree-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+</head>
+
+<body id="top">
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <!-- The masthead is Mallard Green, so it takes the Birch wordmark. Green
+       vanishes on this ground and orange is reserved for the CTAs. -->
+  <a class="wordmark" href="/"><img class="wordmark__img" src="/logo/madebyduck-wordmark-birch.svg" alt="Madebyduck" width="500" height="262" fetchpriority="high"></a>
+  <nav class="nav" aria-label="Main">
+    <a class="nav__link" href="/why-the-duck/">Why the duck</a>
+    <a class="nav__link" href="/pricing/">Pricing</a>
+    <a class="nav__link" href="/contact/">Get in touch</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="hero">
+    <div class="banner">
+      <span class="banner__tick banner__tick--tl" aria-hidden="true"></span>
+      <span class="banner__tick banner__tick--tr" aria-hidden="true"></span>
+      <span class="banner__tick banner__tick--bl" aria-hidden="true"></span>
+      <span class="banner__tick banner__tick--br" aria-hidden="true"></span>
+
+      <!-- Frames 1 to 4 are the animation. Frame 5 states all of it, so they are
+           hidden from assistive tech and dropped entirely under reduced motion. -->
+      <div class="frames">
+        <p class="frame frame--1 beat" aria-hidden="true">Get noticed.</p>
+        <p class="frame frame--2 beat" aria-hidden="true">Get remembered.</p>
+        <p class="frame frame--3 beat" aria-hidden="true">Get known.</p>
+        <p class="frame frame--4 beat" aria-hidden="true">Madebyduck.</p>
+
+        <div class="frame frame--5">
+          <div class="endframe">
+            <p class="beat beat--sm">Get noticed.</p>
+            <p class="beat beat--sm">Get remembered.</p>
+            <p class="beat beat--sm beat--land">Get known.</p>
+            <h1 class="endframe__mark"><img src="/logo/madebyduck-wordmark-birch.svg" alt="Madebyduck" width="500" height="262"></h1>
+            <a class="btn" href="/contact/">Get in touch <svg class="btn__arrow" viewBox="0 0 18 12" aria-hidden="true" focusable="false"><path d="M0 6h15M10.5 1.5 15 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<section class="section section--blue longgame">
+    <!-- LABEL I WROTE: eyebrow "Philosophy". Your label was "The case for advertising", too long for an eyebrow. -->
+    <p class="eyebrow">Philosophy</p>
+    <div class="longgame__grid">
+      <h2 class="d2 longgame__head">Advertising is a<br><span class="hi">long&nbsp;game.</span></h2>
+      <p class="body longgame__body">Advertising isn't only about sales. It's about being remembered. That's the long game.</p>
+    </div>
+
+    <!-- LABEL I WROTE: "Find out more". -->
+    <div class="more">
+      <p class="label more__label">Find out more</p>
+      <div class="more__row">
+        <a class="btn" href="/why-the-duck/">Why the duck <svg class="btn__arrow" viewBox="0 0 18 12" aria-hidden="true" focusable="false"><path d="M0 6h15M10.5 1.5 15 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg></a>
+        <a class="btn btn--birch" href="/pricing/">Pricing <svg class="btn__arrow" viewBox="0 0 18 12" aria-hidden="true" focusable="false"><path d="M0 6h15M10.5 1.5 15 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+
+
+</main>
+
+<footer class="foot">
+  <p class="eyebrow foot__eyebrow">Contact</p>
+  <a class="email" href="mailto:hello@madebyduck.com">hello@madebyduck.com</a>
+  <div class="legal">
+    <!-- PLACEHOLDERS: ABN number, privacy policy URL, website terms URL. -->
+    <p class="legal__item">ABN 00 000 000 000</p>
+    <p class="legal__item"><a href="#privacy-placeholder">Privacy policy</a></p>
+    <p class="legal__item"><a href="#terms-placeholder">Website terms</a></p>
+  </div>
+</footer>
+
+</body>
 </html>
