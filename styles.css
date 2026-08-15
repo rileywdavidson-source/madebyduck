@@ -194,6 +194,10 @@ a { color: inherit; }
 .btn:active { transform: translate(var(--off), var(--off)); box-shadow: 0 0 0 var(--chestnut); }
 .btn:disabled { opacity: 0.6; cursor: progress; }
 
+/* Alternate fill. The outline and the offset shadow stay chestnut, so the
+   rule holds and only the fill changes. */
+.btn--birch { background: var(--birch); }
+
 .btn--full { width: 100%; }
 
 /* The arrow is drawn, not typed. U+2192 is not in the Figtree latin subset,
