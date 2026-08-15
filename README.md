@@ -63,7 +63,7 @@ self-hosted so there are no third-party requests at all. Figtree is preloaded.
 
 | What | Where |
 | --- | --- |
-| Logo files | `index.html`, the `LOGO PLACEHOLDER` comment in `<header>`. A text wordmark stands in, and the banner's last card signs off in EB Garamond italic. |
+| Logo files | See `logo/README.md`. A text wordmark stands in on all four pages; the banner's last card signs off in EB Garamond italic. |
 | `favicon.svg` | Repo root. Brand mark, not the logo. |
 | `og.png` | Does not exist yet. Needs a 1200x630 PNG at the site root. |
 | Domain | `madebyduck.com.au` is assumed in the Open Graph tags and canonicals. The email is `@madebyduck.com`, so this may want to be `.com` too. |
@@ -93,6 +93,12 @@ place so the page does not navigate. With JS off, the redirect path does the sam
 ## Changing things
 
 Every colour, type size, spacing step and shadow offset is a custom property at the top
-of `styles.css`. Buttons are one `.btn` rule. Section grounds are four modifier classes
+of `styles.css`. Buttons are one `.btn` rule, and every CTA on the site uses it
+unchanged: orange fill, chestnut text, and the outline and the offset shadow both
+chestnut so the two read as one form.
+
+The logo is not in the repo yet. `logo/README.md` says which files to export, in what
+format, and where each one goes. Each page carries a `LOGO PLACEHOLDER` comment with
+the exact line to paste once the files land. Section grounds are four modifier classes
 (`--birch`, `--chestnut`, `--green`, `--blue`) that also carry the correct focus ring
 colour for that ground.

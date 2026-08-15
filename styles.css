@@ -166,8 +166,9 @@ a { color: inherit; }
 
 
 /* ---------- Buttons ----------
-   Orange ground, chestnut text, birch outline, chestnut offset shadow.
-   Square corners. Same everywhere the button appears. */
+   Orange ground, chestnut text. The outline and the offset shadow are the
+   same chestnut, which is the rule for every CTA on the site. Square
+   corners. One treatment, everywhere a button appears. */
 
 .btn {
   display: inline-flex;
@@ -176,7 +177,7 @@ a { color: inherit; }
   gap: 0.7em;
   background: var(--orange);
   color: var(--chestnut);
-  border: var(--edge) solid var(--birch);
+  border: var(--edge) solid var(--chestnut);
   border-radius: 0;
   box-shadow: var(--off) var(--off) 0 var(--chestnut);
   padding: 1.0625rem 1.625rem;
@@ -193,13 +194,6 @@ a { color: inherit; }
 .btn:active { transform: translate(var(--off), var(--off)); box-shadow: 0 0 0 var(--chestnut); }
 .btn:disabled { opacity: 0.6; cursor: progress; }
 
-/* Quiet variant. Same shape, no orange, so the fill stays reserved for the
-   one call to action on the page. */
-.btn--ghost {
-  background: transparent;
-  color: var(--birch);
-  border-color: var(--birch);
-}
 .btn--full { width: 100%; }
 
 /* The arrow is drawn, not typed. U+2192 is not in the Figtree latin subset,
@@ -260,6 +254,13 @@ a { color: inherit; }
   letter-spacing: -0.03em;
   text-decoration: none;
   line-height: 1;
+  display: block;
+}
+
+/* Sized for the supplied logo. See logo/README.md. */
+.wordmark__img {
+  height: clamp(22px, 5vw, 28px);
+  width: auto;
 }
 
 .nav {
